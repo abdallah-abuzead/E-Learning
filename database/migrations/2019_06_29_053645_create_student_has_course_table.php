@@ -18,7 +18,7 @@ class CreateStudentHasCourseTable extends Migration
             $table->unsignedBigInteger('course_id'); 
             $table->unique(['student_id', 'course_id']); 
 
-            $table->unsignedInteger('grade'); 
+            $table->unsignedInteger('commulativeGrade');
             $table->timestamps(); 
 
             $table->foreign('student_id')->references('id')->on('student')->onDelete('cascade'); 

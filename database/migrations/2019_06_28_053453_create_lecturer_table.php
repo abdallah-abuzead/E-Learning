@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionOptionTable extends Migration
+class CreateLecturerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateQuestionOptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_option', function (Blueprint $table) {
+        Schema::create('lecturer', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value'); 
-            $table->unsignedBigInteger('quest_id');
-            $table->boolean('true_false');
+            $table->string('fullName');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->string('email'); 
+            $table->string('title')->nullable(); 
             $table->timestamps();
-
-            $table->foreign('quest_id')->references('id')->on('question')->onDelete('cascade'); 
         });
     }
 
@@ -31,6 +31,6 @@ class CreateQuestionOptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_option');
+        Schema::dropIfExists('lecturer');
     }
 }
