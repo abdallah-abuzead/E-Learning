@@ -6,43 +6,51 @@ body {
     background-repeat: no-repeat;
 }
 
-.register{
+.login {
     background: -webkit-linear-gradient(left, rgba(24, 57, 129, 0.55), rgba(58, 168, 228, 0.55)); 
-    margin-top: 3%;
-    padding: 3%;
+    margin-top: 3%; 
+    margin-bottom: 3%; 
+    padding: 3%; 
 }
 
-.register-left{
+.login-left {
     text-align: center;
     color: #fff;
     margin-top: 4%;
 }
 
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 60%;
-    background: #f8f9fa;
+.login-left input {
+    border: 2px solid #0062cc; 
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem; 
+    width: 150px;
+    height: 40px; 
+    background: #0062cc;
     font-weight: bold;
-    color: #383d41;
+    color: #ffffff; 
     margin-top: 30%;
     margin-bottom: 3%;
     cursor: pointer;
 }
 
-.register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
-}
-
-.register-left img{
+.login-left img.logo {
     margin-top: 15%;
     margin-bottom: 5%;
     width: 25%;
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 1s infinite  alternate;
+}
+
+.login-left p {
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+
+.login-right {
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
 }
 
 @-webkit-keyframes mover {
@@ -55,18 +63,12 @@ body {
     100% { transform: translateY(-20px); }
 }
 
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
-}
-
-.register .register-form{
+.login .login-form {
     padding: 10%;
     margin-top: 10%;
 }
 
-.btnRegister{
+.btnRegister {
     float: right;
     margin-top: 10%;
     border: none;
@@ -79,7 +81,7 @@ body {
     cursor: pointer;
 }
 
-.register .nav-tabs{
+.login .nav-tabs {
     margin-top: 3%;
     border: none;
     background: #0062cc;
@@ -88,7 +90,7 @@ body {
     float: right;
 }
 
-.register .nav-tabs .nav-link{
+.login .nav-tabs .nav-link {
     padding: 2%;
     height: 34px;
     font-weight: 600;
@@ -97,11 +99,11 @@ body {
     border-bottom-right-radius: 1.5rem;
 }
 
-.register .nav-tabs .nav-link:hover{
+.login .nav-tabs .nav-link:hover {
     border: none;
 }
 
-.register .nav-tabs .nav-link.active{
+.login .nav-tabs .nav-link.active {
     width: 100px;
     color: #0062cc;
     border: 2px solid #0062cc;
@@ -109,9 +111,22 @@ body {
     border-bottom-left-radius: 1.5rem;
 }
 
-.register-heading{
+.login-heading {
     text-align: center;
     margin-top: 8%;
     margin-bottom: -15%;
     color: #495057;
+}
+
+.loginBtn {
+    width: 175px; 
+    height: 175px; 
+    border-radius: 50%; 
+    background-color: #0062cc; 
+    color: #fff; 
+    font-size: 21px; 
+}
+
+.loginContainer {
+    text-align: right; 
 }
