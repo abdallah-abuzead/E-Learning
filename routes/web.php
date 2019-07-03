@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/homeStudent', 'HomeController@homeStudent')->name('homeStu');
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
+Route::get('/courses/{id}', 'CoursesController@show')->name('course');
