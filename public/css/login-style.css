@@ -3,7 +3,7 @@ body {
     padding: 0px; 
     background-image: url("../images/computer-board.jpg"); 
     background-size: cover; 
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; 
 }
 
 .login {
