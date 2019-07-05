@@ -14,7 +14,7 @@
     <style>
         html, body {
 
-            background-image: url("{{asset('img/head.jpg')}}");
+            background-image: url("{{asset('images/head.jpg')}}");
 
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
