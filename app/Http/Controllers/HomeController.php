@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Courses;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -28,7 +30,8 @@ class HomeController extends Controller
 
     public function homeStudent()
     {
-        return view('homeStudent');
+        $courses = Courses::all();
+        return view('homeStudent')->with("courses", $courses);
     }
     public function homeInstructor()
     {

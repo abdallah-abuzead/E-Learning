@@ -1,0 +1,41 @@
+/*start main rules*/
+
+body{
+    background-color: #f4f4f4;
+    font-size: 16px;
+}
+
+h1{
+    font-size: 45px;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #666;
+}
+
+/*end main rules*/
+
+/*start courseProfile page*/
+
+.course-info h2{
+    margin: 0;
+    padding: 10px;
+}
+
+.course-info p{
+    padding: 10px;
+}
+
+.course-info ul li{
+    padding: 10px;
+}
+
+.course-info ul li:nth-child(odd){
+    background-color: #e8e8e8;
+}
+
+.course-info ul li span{
+    display: inline-block;
+    width: 120px;
+}
+
+/*end courseProfile page*/
