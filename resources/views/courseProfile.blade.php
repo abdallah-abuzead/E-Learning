@@ -1,11 +1,12 @@
 @extends('layouts.app')
+<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
 @section('content')
     <h1 class="text-center">{{$course->subject}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive img-thumbnail center-block" src={{asset("course.jpg")}}>
+                <img class="img-responsive img-thumbnail center-block" src={{asset("images/course.jpg")}}>
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
