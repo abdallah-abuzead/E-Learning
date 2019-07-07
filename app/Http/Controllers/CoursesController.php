@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Courses;
+use App\Videos;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -47,7 +48,46 @@ class CoursesController extends Controller
     public function show($id)
     {
         $course = Courses::find($id);
-        return view("courseProfile")->with("course", $course);
+        $videos = Videos::all()->where('course_id', $id);
+        return view("courseProfile")->with(compact('course', 'videos'));
+    }
+
+    public function enroll($id)
+    {
+        $course = Courses::find($id);
+        return view("enrollCourse")->with("course", $course);
+    }
+
+    public function createVideo($id)
+    {
+        $course = Courses::find($id);
+        return view("newVideo")->with("course", $course);
+    }
+
+    public function storeVideo(Request $request)
+    {
+        $this->validate($request, [
+            'name'=>'required'
+        ]);
+
+        $videoNameWithExt = $request->file('video')->getClientOriginalName();
+        $videoName = pathinfo($videoNameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('video')->getClientOriginalExtension();
+        $videoNameToStore = $videoName.time().$extension;
+        $path = $request->file('video')->move(base_path().'/public/videos', $videoNameToStore);
+
+        $video = new Videos();
+        $video->name = $request->input("name");
+        $video->url = $videoNameToStore;
+        $video->course_id = $request->input("id");
+        $video->save();
+        return redirect('/courses/'.$request->input("id"));
+    }
+
+    public function playVideo($id)
+    {
+        $video = Videos::find($id);
+        return view("playVideo")->with("video", $video);
     }
 
     /**
