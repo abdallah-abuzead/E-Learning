@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homeStudent', 'HomeController@homeStudent')->name('homeStu');
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 Route::get('/courses/{id}', 'CoursesController@show')->name('course');
+Route::get('Courses/create' , 'HomeController@addCourses');
 Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
 Route::get('/newVideo/{id}', 'CoursesController@createVideo')->name('newvideo');
 Route::post('/storeVideo', 'CoursesController@storeVideo')->name('storevideo');
