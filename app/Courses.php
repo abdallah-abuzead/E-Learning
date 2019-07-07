@@ -9,8 +9,9 @@ class Courses extends Model
     protected $table = 'course';
     protected $primaryKey = 'id';
     protected $fillable = ['subject', 'lec_id'];
+
     public function lecturer()
     {
-        return $this->hasOne('App\Lecturers');
+        return $this->belongsTo('App\Lecturers','lec_id');
     }
 }
