@@ -11,6 +11,6 @@ class Lecturers extends Model
     protected $fillable = ['fullName', 'username', 'password', 'email', 'title'];
     public function courses()
     {
-        return $this->hasMany('App\Courses');
+        return $this->hasMany('App\Courses', 'lec_id');
     }
 }
