@@ -13,15 +13,15 @@
                         </span>
             <ul class="dropdown-menu">
                 <li><a href="#">My Profile</a></li>
-                <li><a href="#">New Course</a></li>
+                <li><a href="Courses/create">New Course</a></li>
                 <li><a href="profile.php#my-courses">My Courses</a></li>
                 <li><a href="#">Edit Profile</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="/user-logout">Log out</a></li>
             </ul>
         </div>
 
             {{--if session not exists--}}
-        <a href="#">
+        <a href="/user-login">
             <span class="pull-right">Login | Signup</span>
         </a>
     </div>
@@ -46,3 +46,5 @@
     </div>
 </nav>
 <br><br><br>
+
+@yield('content')

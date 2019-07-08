@@ -6,4 +6,3 @@
 <script src="{{ asset('js/jQuery 4.3.1.js') }}"></script>
 <script src="{{asset('js/frontend.js')}}"></script>
 
-@yield('content')
