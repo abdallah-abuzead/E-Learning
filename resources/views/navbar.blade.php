@@ -3,7 +3,7 @@
 <div class="upper-bar">
     <div class="container">
 
-        {{--if session exists(login)--}}
+    @if(!empty(Session::get('frontSession')))
         <img class="my-image img-circle img-thumbnail" src="{{asset('images/commenter.png')}}">
         <div class="btn-group my-info">
                         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -16,14 +16,19 @@
                 <li><a href="Courses/create">New Course</a></li>
                 <li><a href="profile.php#my-courses">My Courses</a></li>
                 <li><a href="#">Edit Profile</a></li>
+                @if(Session::get('type')=='lecturer')
+                <li><a href="Courses/create">Add Course</a></li>
+                <li><a href="product/create">Add Exam</a></li>
+                @endif
                 <li><a href="/user-logout">Log out</a></li>
             </ul>
         </div>
 
-            {{--if session not exists--}}
-        <a href="/user-login">
+            @else
+        <a href="{{ url('/user-login') }}">
             <span class="pull-right">Login | Signup</span>
         </a>
+        @endif
     </div>
 </div>
 
