@@ -36,7 +36,6 @@ Route::get('Courses/create' , 'HomeController@addCourses');
 
 
 Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
-Route::get('/newVideo/{id}', 'CoursesController@createVideo')->name('newvideo');
 Route::post('/storeVideo', 'CoursesController@storeVideo')->name('storevideo');
 Route::get('/playVideo/{id}', 'CoursesController@playVideo')->name('playvideo');
 });

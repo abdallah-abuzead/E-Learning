@@ -14,6 +14,63 @@ h1{
 
 /*end main rules*/
 
+/*start navbar*/
+
+.navbar{
+    padding: 3px 100px;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
+    color:#9191f9;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.dropdown-menu{
+    background-color: #dde1f1;
+    padding: 0;
+}
+
+.nav li a{
+    padding: 15px 10px;
+}
+
+.dropdown-menu>li>a{
+    padding: 8px 10px;
+}
+
+.dropdown-menu>li>a:hover{
+    background-color: #7ed6df;
+}
+
+.navbar-nav{
+    padding-left: 130px;
+    font-size: 15px;
+}
+
+/*end navbar*/
+
+/*start upper bar*/
+
+.upper-bar{
+    padding: 10px;
+    background-color: #fff;
+}
+
+.my-image{
+    width: 40px;
+    height: 40px;
+}
+
+.upper-bar a span{
+    font-size: 18px;
+}
+
+/*end upper bar*/
+
+
 /*start courseProfile page*/
 
 .course-info h2{
@@ -37,6 +94,24 @@ h1{
 .course-info ul li span{
     display: inline-block;
     width: 120px;
+}
+
+.add-video{
+    padding: 10px;
+    width: 500px;
+    height: 260px;
+    position: fixed;
+    left: 520px;
+    top:150px;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 2px 6px 8px #ddd;
+    display: none;
+}
+
+.cancel{
+    margin-top: 10px;
 }
 
 .enroll{
