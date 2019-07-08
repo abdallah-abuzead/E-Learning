@@ -20,7 +20,7 @@
                 <li><a href="Courses/create">Add Course</a></li>
                 <li><a href="product/create">Add Exam</a></li>
                 @endif
-                <li><a href="/user-logout">Log out</a></li>
+                <li><a href="{{ url('/user-logout') }}">Log out</a></li>
             </ul>
         </div>
 
