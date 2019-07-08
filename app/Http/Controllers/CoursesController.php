@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Courses;
+use App\Student;
 use App\Videos;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,8 @@ class CoursesController extends Controller
     {
         $course = Courses::find($id);
         $videos = Videos::all()->where('course_id', $id);
+        
+        //dd($course->students[0]->pivot->commulativeGrade);
         return view("courseProfile")->with(compact('course', 'videos'));
     }
 
@@ -73,7 +76,7 @@ class CoursesController extends Controller
         $videoNameWithExt = $request->file('video')->getClientOriginalName();
         $videoName = pathinfo($videoNameWithExt, PATHINFO_FILENAME);
         $extension = $request->file('video')->getClientOriginalExtension();
-        $videoNameToStore = $videoName.time().$extension;
+        $videoNameToStore = $videoName.time().".".$extension;
         $path = $request->file('video')->move(base_path().'/public/videos', $videoNameToStore);
 
         $video = new Videos();

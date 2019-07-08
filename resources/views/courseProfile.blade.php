@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive img-thumbnail center-block" src={{asset("images/course.jpg")}}>
+                <img class="img-responsive img-thumbnail center-block" src='{{asset("images/course.jpg")}}'>
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
@@ -13,7 +13,7 @@
                 <ul class="list-unstyled">
                     <li>
                         <i class="fa fa-user fa-fw"></i>
-                        <span>Added by</span>: {{$course->lec_id}}</a>
+                        <span>Added by</span>: {{$course->lecturer->username}}</a>
                     </li>
                     <li>
                         <i class="fa fa-calendar-alt fa-fw"></i>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <br>
-        <a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a>
+        @if(Session::get('type')=='lecturer')<a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a>@endif
 
         <hr class="custom-hr">
         <br>
@@ -46,9 +46,8 @@
         fksekkkkkkkkkkkkkkkkkkkkkkkkkk
         fksekkkkkkkkkkkkkkkkkkkkkkkkkk
         </pre>
-
-
-        <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">Enroll Now <span>$100</span></a>
+        
+        @if( Session::get('type')=='student' && $course->students[0]->id == Session::get('frontSession')->id )<a class="btn btn-success btn-lg enroll" href="">Watch Videos</a> @else <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">Enroll Now <span>$100</span></a> @endif
         <br>
         <hr class="custom-hr">
         <br>

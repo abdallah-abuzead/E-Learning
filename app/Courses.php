@@ -18,4 +18,8 @@ class Courses extends Model
     {
         return $this->hasMany('App\Videos', 'course_id');
     }
+    public function students()
+    {
+        return $this->belongsToMany(Student::class , 'courses_student' ,'course_id')->withPivot('commulativeGrade');
+    }
 }

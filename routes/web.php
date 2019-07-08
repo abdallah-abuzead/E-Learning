@@ -24,8 +24,8 @@ Route::get('/register','UserController@registerPage');
 });
 
 Route::post('/user-register','UserController@register');
-Route::post('user-login','UserController@login');
-Route::get('/user-logout','UserController@logout'); 
+Route::post('/user-login','UserController@login');
+Route::match(['get', 'post'],'/user-logout','UserController@logout'); 
 
 Route::group(['middleware'=>['frontLogin']],function(){
 Route::get('/home', 'HomeController@homeStudent')->name('home');
@@ -33,9 +33,10 @@ Route::get('/homeStudent', 'HomeController@homeStudent')->name('homeStu');
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 Route::get('/courses/{id}', 'CoursesController@show')->name('course');
 Route::get('Courses/create' , 'HomeController@addCourses');
-});
+
 
 Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
 Route::get('/newVideo/{id}', 'CoursesController@createVideo')->name('newvideo');
 Route::post('/storeVideo', 'CoursesController@storeVideo')->name('storevideo');
 Route::get('/playVideo/{id}', 'CoursesController@playVideo')->name('playvideo');
+});
