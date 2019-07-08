@@ -58,27 +58,29 @@ class CoursesController extends Controller
         return view("enrollCourse")->with("course", $course);
     }
 
-    public function createVideo($id)
-    {
-        $course = Courses::find($id);
-        return view("newVideo")->with("course", $course);
-    }
-
     public function storeVideo(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required'
+            'video' => 'required'
         ]);
+        $course = Courses::find($request->input("id"));
 
-        $videoNameWithExt = $request->file('video')->getClientOriginalName();
-        $videoName = pathinfo($videoNameWithExt, PATHINFO_FILENAME);
-        $extension = $request->file('video')->getClientOriginalExtension();
-        $videoNameToStore = $videoName.time().$extension;
-        $path = $request->file('video')->move(base_path().'/public/videos', $videoNameToStore);
+        if ($request->hasFile('video')) {
+            $videoNameWithExt = $request->file('video')->getClientOriginalName();
+            $videoName = pathinfo($videoNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('video')->getClientOriginalExtension();
+            $videoNameToStore = $videoName . time() . '.' . $extension;
+            $path = $request->file('video')->move(base_path()."/public/courses/".$course->subject.'_'.$course->id, $videoNameToStore);
+//            $getID3 = new \getID3;
+//            $file = $getID3->analyze($path);
+//            $duration = date('H:i:s.v', $file['playtime_seconds']);
+
+        }
 
         $video = new Videos();
-        $video->name = $request->input("name");
-        $video->url = $videoNameToStore;
+        $video->name = $videoName;
+        $video->video = $videoNameToStore;
+        $video->extension = $extension;
         $video->course_id = $request->input("id");
         $video->save();
         return redirect('/courses/'.$request->input("id"));
@@ -87,7 +89,8 @@ class CoursesController extends Controller
     public function playVideo($id)
     {
         $video = Videos::find($id);
-        return view("playVideo")->with("video", $video);
+        $course = Courses::find($video->course_id);
+        return view("playVideo")->with(compact("video", "course"));
     }
 
     /**
