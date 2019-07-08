@@ -19,7 +19,7 @@
             <img class="logo" src="../images/list.png" alt="list"/>
             <h3>Welcome</h3>
             <p>If you don't have an account, you can register <strong>Now!</strong></p>
-            <a href="{{ url('/register') }}">
+            <a href="{{ url('/user-register') }}">
                 <img src="{{asset('images/leftArrow.png')}}" alt="register-arrow"/>
                 <input type="button" name="register" value="Register"/><br/>
             </a>
@@ -42,7 +42,8 @@
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="lecturer" role="tabpanel"
                     aria-labelledby="lecturer-tab">
-                    <form action="" method="post">
+                    <form action="{{ url('/user-login') }}" method="post">
+                    @csrf
                         <h3 class="login-heading">Login as Lecturer</h3>
                         <div class="row login-form">
                             <div class="col-md-6">
@@ -64,7 +65,8 @@
                 </div>
                 <div class="tab-pane fade show" id="student" role="tabpanel"
                      aria-labelledby="student-tab">
-                    <form action="" method="post">
+                    <form action="{{ url('/user-login') }}" method="post">
+                    @csrf
                         <h3 class="login-heading">Login as Student</h3>
                         <div class="row login-form">
                             <div class="col-md-6">
