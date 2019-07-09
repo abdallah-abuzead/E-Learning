@@ -20,6 +20,6 @@ class Courses extends Model
     }
     public function students()
     {
-        return $this->belongsToMany(Student::class , 'courses_student' ,'course_id')->withPivot('commulativeGrade');
+        return $this->belongsToMany(Student::class , 'courses_student' ,'course_id','student_id')->withPivot('commulativeGrade');
     }
 }
