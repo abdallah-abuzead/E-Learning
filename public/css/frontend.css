@@ -136,7 +136,6 @@ h1{
 .comment-box img{
     max-width: 100px;
     margin-bottom: 10px;
-    /*border: 1px solid #ddd;*/
 }
 
 .comment-box .lead{
@@ -144,18 +143,20 @@ h1{
     position: relative;
     padding: 10px;
     margin-top: 20px;
-    /*font-size: 16px;*/
+    border-radius: 10px;
+    width: 650px;
+    /*font-size: 20px;*/
 }
 
 .comment-box .lead:before{
     content: "";
     width: 0;
     height: 0;
-    border: 15px solid;
+    border: 20px solid;
     border-color: transparent #e0e0e0 transparent transparent;
     position: absolute;
-    left: -28px;
-    top: 10px;
+    left: -32px;
+    top: 5px;
 }
 
 .add-comment h3{

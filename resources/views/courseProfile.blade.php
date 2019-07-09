@@ -33,7 +33,9 @@
         </div>
         <br>
         <!-- <a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a> -->
-        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)<button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>@endif
+        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
+            <button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>
+        @endif
 
         <div class="add-video">
 
@@ -44,7 +46,7 @@
                 <div class="form-group text-center">
                     <label for="video"><h2>Select Video</h2></label><br><br>
                     <div >
-                        <input type="file" name="video" id="video" class="form-control" accept="video/*">
+                        <input type="file" name="video" id="video" class="form-control" accept="video/*" required>
                     </div>
                 </div>
 
@@ -91,19 +93,21 @@
                             <h5><a href="/playVideo/{{$video->id}}" style="color: #FFF;">{{$video->name}}</a></h5>
                         </div>
                     </div>
+                    {{--{{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $video->created_at)->format("F j, Y, g:i a")}}--}}
                 </div>
             @endforeach
         </div>
 
         <h2>Comments</h2>
-        <hr class="custom-hr">
+        <hr class="custom-hr" style="margin-top: -1px;">
+
         <div class='row'>
             <div class="comment-box">
                 <div class='col-md-2 text-center'>
                     <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
                     aaaaaaaaaaaa
                 </div>
-                <div class='col-md-10 lead'>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+                <div class='col-md-10 lead'>aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaa aasasasa asa  sa s as  as</div>
             </div>
         </div>
         <hr class="custom-hr">
@@ -112,15 +116,18 @@
             <div class="col-md-offset-3">
                 <div class="add-comment">
                     <h3>Add Your Comment</h3>
-                    <form action="#" method="post">
+                    <form action="/storeComment" method="post">
                         <textarea name="comment" required></textarea>
                         <input type="submit" class="btn btn-primary" value="Add Comment">
                     </form>
                 </div>
             </div>
         </div>
+
         <br><br>
-        <span class="pull-right confirm"><a href="#"> Delete This Course </a></span>
+        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
+            <span class="pull-right confirm"><a href="#"> Delete This Course </a></span>
+        @endif
         <br><br>
     </div>
 @endsection

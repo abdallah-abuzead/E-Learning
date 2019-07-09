@@ -8,6 +8,7 @@
         <div class="btn-group my-info">
                         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             {{--user logged in--}}
+                            {{--{{Session::get('frontSession')->name}}--}}
                             Abdallah
                             <span class="caret"></span>
                         </span>
