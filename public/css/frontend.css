@@ -7,18 +7,76 @@ body{
 
 h1{
     font-size: 45px;
-    margin: 20px 0;
+    /*margin: 20px 0;*/
     font-weight: bold;
     color: #666;
 }
 
 /*end main rules*/
 
+/*start navbar*/
+
+.navbar{
+    padding: 3px 100px;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
+    color:#9191f9;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.dropdown-menu{
+    background-color: #dde1f1;
+    padding: 0;
+}
+
+.nav li a{
+    padding: 15px 10px;
+}
+
+.dropdown-menu>li>a{
+    padding: 8px 10px;
+}
+
+.dropdown-menu>li>a:hover{
+    background-color: #7ed6df;
+}
+
+.navbar-nav{
+    padding-left: 130px;
+    font-size: 15px;
+}
+
+/*end navbar*/
+
+/*start upper bar*/
+
+.upper-bar{
+    padding: 10px;
+    background-color: #fff;
+}
+
+.my-image{
+    width: 40px;
+    height: 40px;
+}
+
+.upper-bar a span{
+    font-size: 18px;
+}
+
+/*end upper bar*/
+
+
 /*start courseProfile page*/
 
 .course-info h2{
     margin: 0;
     padding: 10px;
+    /*font-size: 22px;*/
 }
 
 .course-info p{
@@ -38,4 +96,91 @@ h1{
     width: 120px;
 }
 
+.add-video{
+    padding: 10px;
+    width: 500px;
+    height: 260px;
+    position: fixed;
+    left: 520px;
+    top:150px;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 2px 6px 8px #ddd;
+    display: none;
+}
+
+.cancel{
+    margin-top: 10px;
+}
+
+.enroll{
+    width: 300px;
+    font-size: 22px;
+    display: block;
+    margin: 40px auto 30px;
+    padding: 20px;
+}
+
+.video{
+    background: #333;
+    border: 1px solid #000;
+    border-radius: 0px;
+    overflow: hidden;
+}
+
+.comment-box{
+    margin-bottom: 20px;
+}
+
+.comment-box img{
+    max-width: 100px;
+    margin-bottom: 10px;
+    /*border: 1px solid #ddd;*/
+}
+
+.comment-box .lead{
+    background-color: #e0e0e0;
+    position: relative;
+    padding: 10px;
+    margin-top: 20px;
+    /*font-size: 16px;*/
+}
+
+.comment-box .lead:before{
+    content: "";
+    width: 0;
+    height: 0;
+    border: 15px solid;
+    border-color: transparent #e0e0e0 transparent transparent;
+    position: absolute;
+    left: -28px;
+    top: 10px;
+}
+
+.add-comment h3{
+    margin: 0 0 10px;
+}
+
+.add-comment textarea{
+    display: block;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 120px;
+}
+
 /*end courseProfile page*/
+
+/*start play video page*/
+
+
+
+/*end play video page*/
+
+/*start out custom*/
+
+.custom-hr{
+    border-top: 1px solid #c9c9c9;
+}
+
+/*end out custom*/

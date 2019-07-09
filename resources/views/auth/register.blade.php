@@ -38,7 +38,8 @@
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="lecturer" role="tabpanel"
                     aria-labelledby="lecturer-tab">
-                    <form action="{{ route('register') }}" method="post" id="lecRegister">
+                    <form action="{{ url('/user-register') }}" method="post" id="lecRegister">
+                    @csrf
                         <h3 class="register-heading">Register as Lecturer</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
@@ -72,7 +73,8 @@
                 </div>
                 <div class="tab-pane fade show" id="student" role="tabpanel"
                      aria-labelledby="student-tab">
-                    <form action="" method="post">
+                    <form action="{{ url('/user-register') }}" method="post">
+                    @csrf
                     <h3 class="register-heading">Register as Student</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
@@ -101,7 +103,7 @@
                     </form>
                 </div>
                 <div class="back container">
-                    <a href="{{ url('/login') }}">
+                    <a href="{{ url('/user-login') }}">
                         <input type="button" name="back" value="Back "/>
                         <img src="{{asset('images/rightArrow.png')}}" alt="back-arrow"/>
                     </a>
