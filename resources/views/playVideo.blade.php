@@ -9,40 +9,44 @@
         <div class="col-sm-6 col-md-9">
             <div class="thumbnail " >
                 <video width="815" height="500" controls>
-                    <source src="{{asset("courses/".$course->subject."_".$course->id."/".$video->video)}}"
-                            type="video/{{$video->extension}}">
+                    <source src="{{asset("courses/".$course->subject."_".$course->id."/".$videos[0]->video)}}"
+                            type="video/{{$videos[0]->extension}}">
                 </video>
                 <div class="caption">
-                    <h4>{{$video->name}}</h4>
+                    <h4>{{$videos[0]->name}}</h4>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-3">
-            <div class="thumbnail " style="height: 240px; max-height: 240px; overflow: hidden;">
-                <video width="245" height="140">
-                    <source src="{{asset("courses/".$course->subject."_".$course->id."/".$video1->video)}}"
-                            type="video/{{$video1->extension}}">
-                </video>
-                <div class="caption">
-                    <hr class="custom-hr">
-                    <a href="/playVideo/{{$video1->id}}" style="color: #000; margin-top: -10px; display: block">{{$video1->name}}</a>
+        @if(isset($videos[1]))
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail " style="height: 235px; max-height: 235px; overflow: hidden;">
+                    <video width="245" height="140">
+                        <source src="{{asset("courses/".$course->subject."_".$course->id."/".$videos[1]->video)}}"
+                                type="video/{{$videos[1]->extension}}">
+                    </video>
+                    <div class="caption">
+                        <hr class="custom-hr">
+                        <a href="/playVideo/{{$videos[1]->id}}" style="color: #000; margin-top: -10px; display: block">{{$videos[1]->name}}</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
 
-        <div class="col-sm-6 col-md-3" style=" margin-top: 10px;">
-            <div class="thumbnail " style="height: 237px; max-height: 237px; overflow: hidden;">
-                <video width="245" height="140">
-                    <source src="{{asset("courses/".$course->subject."_".$course->id."/".$video2->video)}}"
-                            type="video/{{$video2->extension}}">
-                </video>
-                <div class="caption">
-                    <hr class="custom-hr">
-                    <a href="/playVideo/{{$video2->id}}" style="color: #000; margin-top: -10px; display: block">{{$video2->name}}</a>
+        @if(isset($videos[2]))
+            <div class="col-sm-6 col-md-3" style=" margin-top: 17px;">
+                <div class="thumbnail " style="height: 235px; max-height: 235px; overflow: hidden;">
+                    <video width="245" height="140">
+                        <source src="{{asset("courses/".$course->subject."_".$course->id."/".$videos[2]->video)}}"
+                                type="video/{{$videos[2]->extension}}">
+                    </video>
+                    <div class="caption">
+                        <hr class="custom-hr">
+                        <a href="/playVideo/{{$videos[2]->id}}" style="color: #000; margin-top: -10px; display: block">{{$videos[2]->name}}</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         <div style="clear: both;"></div>
         <br>
@@ -72,7 +76,9 @@
             </div>
         </div>
         <br><br>
-        <span class="pull-right confirm"><a href="#"> Delete This Video </a></span>
+        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
+            <span class="pull-right confirm"><a href="/deleteVideo/{{$videos[0]->id}}"> Delete This Video </a></span>
+        @endif
         <br><br>
     </div>
 @endsection

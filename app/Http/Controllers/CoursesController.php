@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Courses;
 use App\Student;
 use App\Videos;
+use Faker\Provider\File;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -77,7 +78,7 @@ class CoursesController extends Controller
         $videoName = pathinfo($videoNameWithExt, PATHINFO_FILENAME);
         $extension = $request->file('video')->getClientOriginalExtension();
         $videoNameToStore = $videoName.time().".".$extension;
-        $path = $request->file('video')->move(base_path().'/public/videos', $videoNameToStore);
+        $request->file('video')->move(base_path().'/public/courses/'.$course->subject.'_'.$course->id, $videoNameToStore);
         }
 
         $video = new Videos();
@@ -94,12 +95,13 @@ class CoursesController extends Controller
         $videos = Videos::all()->where('id', '>=', $id);
         $data = [];
         foreach ($videos as $v) $data[] = $v;
-        $video = $data[0];
-        $video1 = $data[1];
-        $video2 = $data[2];
+        $videos = $data;
+//        $video = $data[0];
+//        $video1 = $data[1];
+//        $video2 = $data[2];
 
-        $course = Courses::find($video->course_id);
-        return view("playVideo")->with(compact("video", "video1", "video2", "course"));
+        $course = Courses::find($videos[0]->course_id);
+        return view("playVideo")->with(compact("videos", "course"));
     }
 
     /**
@@ -133,6 +135,28 @@ class CoursesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Courses::find($id);
+        $dir = base_path().'/public/courses/'.$course->subject.'_'.$course->id;
+
+        if (is_dir($dir)) {
+            $videos = scandir($dir);
+            foreach ($videos as $video) {
+                if ($video != '.' && $video != '..') unlink($dir . '/' . $video);
+            }
+            reset($videos);
+            rmdir($dir);
+        }
+        $course->delete();
+        return redirect('/homeStudent');
+    }
+
+    public function destroyVideo($id)
+    {
+        $video = Videos::find($id);
+        $course = Courses::find($video->course_id);
+        $dir = base_path().'/public/courses/'.$course->subject.'_'.$course->id.'/'.$video->video;
+        unlink($dir);
+        $video->delete();
+        return redirect('/courseProfile/'.$course->id);
     }
 }

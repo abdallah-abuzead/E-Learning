@@ -32,7 +32,7 @@
             </div>
         </div>
         <br>
-        <!-- <a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a> -->
+
         @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
             <button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>
         @endif
@@ -126,7 +126,7 @@
 
         <br><br>
         @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
-            <span class="pull-right confirm"><a href="#"> Delete This Course </a></span>
+            <span class="pull-right confirm"><a href="/deleteCourse/{{$course->id}}"> Delete This Course </a></span>
         @endif
         <br><br>
     </div>
