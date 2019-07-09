@@ -16,10 +16,15 @@ class CreateCourseTable extends Migration
         Schema::create('course', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('subject');
+            $table->string('description');
+            $table->string('level');
+            $table->double('cost');
+            $table->integer('numOfHours');
             $table->unsignedBigInteger('lec_id');
             $table->timestamps();
 
             $table->foreign('lec_id')->references('id')->on('lecturer')->onDelete('cascade');
+
         });
     }
 
