@@ -2,7 +2,7 @@
 @extends('navbar')
 
 @section('content')
-    <h1 class="text-center" style="margin-top: -20px;">{{$course->subject}}</h1>
+    <h1 style="margin-top: -20px; margin-bottom: 50px; text-decoration: underline" class="text-center">{{$course->subject." Course"}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -119,5 +119,8 @@
                 </div>
             </div>
         </div>
+        <br><br>
+        <span class="pull-right confirm"><a href="#"> Delete This Course </a></span>
+        <br><br>
     </div>
 @endsection
