@@ -19,6 +19,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/all.min.css')}}">
+<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/frontend.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -48,6 +52,10 @@
                                     <a class="nav-link" href="{{ url('/user-register') }}">{{ __('Register') }}</a>
                                 </li>
                         @else
+                        @if(Session::get('type')=='lecturer')
+                        <li class="nav-item"> <a class="nav-link" href="Courses/create">  Add Courses </a></li>
+                        <li class="nav-item"><a class="nav-link" href="product/create"> Add Exam</a></li>
+                        @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Session::get('frontSession')->username }} <span class="caret"></span>
@@ -60,7 +68,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ url('/user-logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

@@ -18,7 +18,7 @@ class UserController extends Controller
     public function logout(){
         Session::forget('frontSession');
         Session::forget('type');
-        return redirect('/user-login');
+        return redirect('/home');
     }
 
     public function login(Request $request){

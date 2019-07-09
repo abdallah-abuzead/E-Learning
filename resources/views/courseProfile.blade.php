@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive img-thumbnail center-block" src={{asset("images/course.jpg")}}>
+                <img class="img-responsive img-thumbnail center-block" src='{{asset("images/course.jpg")}}'>
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
@@ -32,7 +32,8 @@
             </div>
         </div>
         <br>
-        <button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>
+        <!-- <a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a> -->
+        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)<button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>@endif
 
         <div class="add-video">
 
@@ -73,9 +74,8 @@
         fksekkkkkkkkkkkkkkkkkkkkkkkkkk
         fksekkkkkkkkkkkkkkkkkkkkkkkkkk
         </pre>
-
-
-        <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">Enroll Now <span>$100</span></a>
+        
+        @if( Session::get('type')=='student' && $course->students[0]->id == Session::get('frontSession')->id )<a class="btn btn-success btn-lg enroll" href="">Watch Videos</a> @else <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">Enroll Now <span>$100</span></a> @endif
         <br>
         <div class="row">
             <hr class="custom-hr">
@@ -84,7 +84,7 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail video" style="max-height: 205px;">
                         <video width="252" height="140">
-                            <source src="{{asset("courses/".$course->subject."_".$course->id."/".$video->video)}}"
+                            <source src='{{asset("courses/".$course->subject."_".$course->id."/".$video->video)}}'
                                     type="video/{{$video->extension}}">
                         </video>
                         <div class="caption">
