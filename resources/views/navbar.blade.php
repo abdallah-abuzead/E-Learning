@@ -13,12 +13,11 @@
                         </span>
             <ul class="dropdown-menu">
                 <li><a href="#">My Profile</a></li>
-                <li><a href="Courses/create">New Course</a></li>
                 <li><a href="profile.php#my-courses">My Courses</a></li>
                 <li><a href="#">Edit Profile</a></li>
                 @if(Session::get('type')=='lecturer')
-                <li><a href="Courses/create">Add Course</a></li>
-                <li><a href="product/create">Add Exam</a></li>
+                <li><a href="Courses/create">New Course</a></li>
+                <li><a href="product/create">New Exam</a></li>
                 @endif
                 <li><a href="{{ url('/user-logout') }}">Log out</a></li>
             </ul>

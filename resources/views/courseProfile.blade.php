@@ -14,7 +14,6 @@
                 <ul class="list-unstyled">
                     <li>
                         <i class="fa fa-user fa-fw"></i>
-                        <span>Added by</span>: {{$course->lecturer->username}}</a>
                         <span>Added by</span>: <a href="#">{{$course->lecturer->username}}</a>
                     </li>
                     <li>
@@ -33,9 +32,8 @@
             </div>
         </div>
         <br>
-        @if(Session::get('type')=='lecturer')<a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a>@endif
-
-        <button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>
+        <!-- <a class="btn btn-primary btn-lg" href="/newVideo/{{$course->id}}"><i class="fa fa-plus"> </i>  Add New Video</a> -->
+        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)<button class="btn btn-primary btn-lg add-video-button"><i class="fa fa-plus"> </i>  Add New Video</button>@endif
 
         <div class="add-video">
 

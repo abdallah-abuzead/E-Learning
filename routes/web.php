@@ -29,11 +29,11 @@ Route::match(['get', 'post'],'/user-logout','UserController@logout');
 
 Route::get('/home', 'HomeController@homeStudent')->name('home');
 Route::get('/homeStudent', 'HomeController@homeStudent')->name('homeStu');
+Route::get('/courses/{id}', 'CoursesController@show')->name('course');
 
 Route::group(['middleware'=>['frontLogin']],function(){
 
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
-Route::get('/courses/{id}', 'CoursesController@show')->name('course');
 Route::get('Courses/create' , 'HomeController@addCourses');
 
 
