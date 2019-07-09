@@ -88,9 +88,15 @@ class CoursesController extends Controller
 
     public function playVideo($id)
     {
-        $video = Videos::find($id);
+        $videos = Videos::all()->where('id', '>=', $id);
+        $data = [];
+        foreach ($videos as $v) $data[] = $v;
+        $video = $data[0];
+        $video1 = $data[1];
+        $video2 = $data[2];
+
         $course = Courses::find($video->course_id);
-        return view("playVideo")->with(compact("video", "course"));
+        return view("playVideo")->with(compact("video", "video1", "video2", "course"));
     }
 
     /**
