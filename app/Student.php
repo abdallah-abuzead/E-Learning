@@ -11,6 +11,6 @@ class Student extends Model
     protected $fillable = ['fullName', 'username', 'password', 'email'];
     public function courses()
     {
-        return $this->belongsToMany(Courses::class , 'courses_student' ,'student_id');
+        return $this->belongsToMany(Courses::class , 'courses_student' ,'student_id', 'course_id')->withPivot('commulativeGrade');
     }
 }

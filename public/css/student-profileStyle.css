@@ -1,0 +1,190 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url("../images/computer-board.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 45px;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #666;
+}
+
+.navbar {
+    padding: 3px 100px;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    color:#e80000;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.dropdown-menu {
+    background-color: #dde1f1;
+    padding: 0;
+}
+
+.nav li a {
+    padding: 15px 10px;
+}
+
+.dropdown-menu>li>a {
+    padding: 8px 10px;
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: #7ed6df;
+}
+
+.navbar-nav {
+    padding-left: 130px;
+    font-size: 15px;
+}
+
+.upper-bar {
+    padding: 10px;
+    background-color: #fff;
+}
+
+.my-image {
+    width: 40px;
+    height: 40px;
+}
+
+.login-page form, .the-errors {
+    max-width: 310px;
+    margin: auto;
+}
+
+.login-page form input {
+    margin-bottom: 5px;
+}
+
+.login-page [data-class="login"].selected {
+    color: #337ab7;
+}
+
+.login-page [data-class="signup"].selected {
+    color: #5cb85c;
+}
+
+.login-page h1 {
+    color: #c0c0c0;
+}
+
+.login-page h1 span {
+    cursor: pointer;
+}
+
+.login-page .signup {
+    display: none;
+}
+
+.the-errors .msg {
+    padding: 10px;
+    text-align: left;
+    background-color: #fff;
+    margin-bottom: 8px;
+    border-right: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #919191;
+}
+
+.the-errors .error {
+    border-left: 5px solid #cd6858;
+}
+
+.the-errors .success {
+    border-left: 5px solid #bbff22;
+}
+
+.item-box {
+    position: relative;
+}
+
+.item-box .grade-tag {
+    background-color: #F44336;
+    padding: 2px 10px;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.information {
+    margin-top: 20px;
+}
+
+.information ul {
+    padding: 0;
+    margin: 0;
+}
+
+.information ul li {
+    padding: 10px;
+}
+
+.information ul li:nth-child(odd) {
+    background-color: #eee;
+}
+
+.information ul li span {
+    display: inline-block;
+    width: 120px;
+}
+
+.information .btn {
+    margin-top: 10px;
+}
+
+.thumbnail .date {
+    text-align: right;
+    font-size: 13px;
+    color: #aaa;
+    font-weight: bold;
+}
+
+.item-box .approve-status {
+    background-color: #b85a5a;
+    position: absolute;
+    top: 9px;
+    left: 122px;
+    color: #fff;
+    padding: 3px 5px;
+}
+
+.item-box caption p {
+    height: 44px;
+    max-height: 44px;
+}
+
+.lecturer-detail summary a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #009688;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.lecturer-detail summary a:focus,
+.lecturer-detail summary a:hover {
+    color: #2196F3;
+}
+
+.lecturer-detail summary a:active {
+    color: #607D8B;
+}
+
+.course-subject {
+    color: #2196F3;
+}
