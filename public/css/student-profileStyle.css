@@ -14,6 +14,14 @@ h1 {
     color: #666;
 }
 
+.profile-title {
+    color: #FF5722;
+}
+
+.student-profileImg {
+    text-align: center;
+}
+
 .navbar {
     padding: 3px 100px;
     border-radius: 0;
@@ -187,4 +195,18 @@ h1 {
 
 .course-subject {
     color: #2196F3;
+}
+
+.show-pass {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.show-pass span {
+    margin-top: 7px;
+    text-align: center;
+}
+
+.save-discard {
+    text-align: right;
 }
