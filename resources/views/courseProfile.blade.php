@@ -117,6 +117,9 @@
                 <div class="add-comment">
                     <h3>Add Your Comment</h3>
                     <form action="/storeComment" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="user_id" value="{{Session::get('frontSession')->id}}">
+                        <input type="hidden" name="course_id" value="{{$course->id}}">
                         <textarea name="comment" required></textarea>
                         <input type="submit" class="btn btn-primary" value="Add Comment">
                     </form>

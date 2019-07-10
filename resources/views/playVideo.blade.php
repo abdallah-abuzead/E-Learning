@@ -50,6 +50,16 @@
 
         <div style="clear: both;"></div>
         <br>
+        <div class="paging">
+            @if(count($prevs)>=1)
+                <a href="/playPreviousVideo/{{$videos[0]->id}}" class="previous"><i class="fas fa-angle-double-left"></i> Previous</a>
+            @endif
+            @if(isset($videos[1]))
+                <a href="/playNextVideo/{{$videos[0]->id}}" class="next">Next <i class="fas fa-angle-double-right"></i></a>
+            @endif
+        </div>
+
+        <br><br><br><br>
 
         <h2>Comments</h2>
         <hr class="custom-hr">
@@ -69,6 +79,10 @@
                 <div class="add-comment">
                     <h3>Add Your Comment</h3>
                     <form action="#" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="user_id" value="{{Session::get('frontSession')->id}}">
+                        <input type="hidden" name="course_id" value="{{$course->id}}">
+                        <input type="hidden" name="video_id" value="{{$videos[0]->id}}">
                         <textarea name="comment" required></textarea>
                         <input type="submit" class="btn btn-primary" value="Add Comment">
                     </form>
