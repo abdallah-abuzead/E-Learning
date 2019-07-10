@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::group(['middleware'=>['goHome']],function(){
-Route::get('/user-login','UserController@loginPage');
-Route::get('/user-register','UserController@registerPage');
-Route::get('/login','UserController@loginPage'); // a5er precedence ll route howa ely bytnfez
-Route::get('/register','UserController@registerPage');
+Route::group(['middleware'=>['goHome']], function() {
+    Route::get('/user-login','UserController@loginPage');
+    Route::get('/user-register','UserController@registerPage');
+    Route::get('/login','UserController@loginPage'); // a5er precedence ll route howa ely bytnfez
+    Route::get('/register','UserController@registerPage');
 });
 
 Route::post('/user-register','UserController@register');
@@ -30,8 +30,18 @@ Route::match(['get', 'post'],'/user-logout','UserController@logout');
 Route::get('/home', 'HomeController@homeStudent')->name('home');
 Route::get('/homeStudent', 'HomeController@homeStudent')->name('homeStu');
 Route::get('/courses/{id}', 'CoursesController@show')->name('course');
+Route::get('/student-profile/{id}', 'StudentController@show')->name('studentProfile');
+Route::post('/student-profile-edit/{id}', 'StudentController@edit')->name('studentProfileEdit');
+Route::post('/student-profile-save/{id}', 'StudentController@update')->name('studentProfileSave');
 
-Route::group(['middleware'=>['frontLogin']],function(){
+Route::group(['middleware'=>['frontLogin']], function() {
+    Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
+    Route::get('Courses/create' , 'HomeController@addCourses');
+
+
+    Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
+    Route::post('/storeVideo', 'CoursesController@storeVideo')->name('storevideo');
+    Route::get('/playVideo/{id}', 'CoursesController@playVideo')->name('playvideo');
 
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 
@@ -49,6 +59,7 @@ Route::get('/playVideo/{id}', 'VideoController@playVideo')->name('playvideo');
 Route::get('/playPreviousVideo/{id}', 'VideoController@playPreviousVideo')->name('playpreviousvideo');
 Route::get('/playNextVideo/{id}', 'VideoController@playNextVideo')->name('playnextvideo');
 Route::get('/deleteVideo/{id}' , 'VideoController@destroyVideo');
+
 });
 
 Route::get('/deleteCourse/{id}' , 'CoursesController@destroy');
