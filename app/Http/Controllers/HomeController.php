@@ -38,9 +38,9 @@ class HomeController extends Controller
         return view('homeInstructor');
     }
 
-    public function addCourses()
-    {
-        return view('Courses.create');
-    }
+//    public function addCourses()
+//    {
+//        return view('Courses.create');
+//    }
 
 }
