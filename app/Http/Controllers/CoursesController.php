@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Courses;
+use  App\Courses;
 use App\Student;
 use App\Videos;
+use App\Lecturers;
+
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -26,7 +28,8 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        //
+        return view('Courses.create',['Lecturers'=>Lecturers::all()] );
+
     }
 
     /**
@@ -37,6 +40,30 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'Subject'=>'required|alpha',
+            'description'=>'required|alpha',
+            'level'=>'required|alpha',
+            'cost'=>'required',
+            'NumberOfHours'=>'required',
+            'lectureID'=>'required',
+
+
+        ]);
+
+        $courses = new Courses();
+
+        $courses->subject = $request->input('Subject');
+        $courses->description = $request->input('description');
+        $courses->level = $request->input('level');
+        $courses->cost = $request->input('cost');
+        $courses->numOfHours = $request->input('NumberOfHours');
+        $courses->lec_id = $request->input('lectureID');
+
+        $courses->save();
+        return redirect('/homeStudent');
+
         //
     }
 

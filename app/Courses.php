@@ -8,8 +8,7 @@ class Courses extends Model
 {
     protected $table = 'course';
     protected $primaryKey = 'id';
-    protected $fillable = ['subject', 'lec_id'];
-
+    protected $fillable = ['subject','description','level','cost','numOfHours', 'lec_id'];
     public function lecturer()
     {
         return $this->belongsTo('App\Lecturers','lec_id');

@@ -34,7 +34,9 @@ Route::get('/courses/{id}', 'CoursesController@show')->name('course');
 Route::group(['middleware'=>['frontLogin']],function(){
 
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
-Route::get('Courses/create' , 'HomeController@addCourses');
+Route::get('Courses/create' , 'CoursesController@create');
+Route::post('/Courses/create' , 'CoursesController@store');
+
 
 
 Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
