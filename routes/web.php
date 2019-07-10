@@ -38,8 +38,7 @@ Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 Route::get('Courses/create' , 'CoursesController@create');
 Route::post('/Courses/create' , 'CoursesController@store');
 
-=======
-Route::get('Courses/create' , 'HomeController@addCourses');
+
 Route::get('/deleteCourse/{id}' , 'CoursesController@destroy');
 
 
