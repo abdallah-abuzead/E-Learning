@@ -47,10 +47,6 @@ Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 Route::get('Courses/create' , 'HomeController@addCourses');
 
 
-    // Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
-    // Route::post('/storeVideo', 'CoursesController@storeVideo')->name('storevideo');
-    // Route::get('/playVideo/{id}', 'CoursesController@playVideo')->name('playvideo');
-
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 
 Route::get('Courses/create' , 'CoursesController@create');

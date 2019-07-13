@@ -15,7 +15,7 @@
                 <ul class="list-unstyled">
                     <li>
                         <i class="fa fa-user fa-fw"></i>
-                        <span>Added by</span>: <a href="/student-profile/{{$course->lecturer->id}}">{{$course->lecturer->username}}</a>
+                        <span>Added by</span>: <a href="/student-profile/{{$course->lecturer->id}}">{{$course->lecturer->fullName}}</a>
                     </li>
                     <li>
                         <i class="fa fa-calendar-alt fa-fw"></i>
