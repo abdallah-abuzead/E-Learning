@@ -36,6 +36,9 @@
                 </li>
             </ul>
             <div class="tab-content">
+            @if(Session::has('flash_message_error'))
+                <p class="alert alert-info" style='width:300px;'>{{ Session::get('flash_message_error') }}</p>
+                @endif
                 <div class="tab-pane fade show active" id="lecturer" role="tabpanel"
                     aria-labelledby="lecturer-tab">
                     <form action="{{ url('/user-register') }}" method="post" id="lecRegister">

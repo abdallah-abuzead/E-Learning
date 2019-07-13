@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lecturers;
 use App\Student;
+use App\User;
 use Session;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
@@ -29,8 +30,8 @@ class UserController extends Controller
             $password = $data['password'];
 
             if($data['tabel']=='lecturer'){
-                $lecturer = Lecturers::where('username',$data['username'])->first();
-                if(!empty($lecturer) && Hash::check($password,$lecturer->password)){
+                $lecturer = User::where('username',$data['username'])->first();
+                if(!empty($lecturer) && Hash::check($password,$lecturer->password) && $lecturer->type == 1){
                     Session::put('frontSession',$lecturer);
                     Session::put('type','lecturer');
                 }
@@ -39,8 +40,8 @@ class UserController extends Controller
                 }
             }
             else if($data['tabel']=='student'){
-                $student = Student::where('username',$data['username'])->first();
-                if(!empty($student) && Hash::check($password,$student->password)){
+                $student = User::where('username',$data['username'])->first();
+                if(!empty($student) && Hash::check($password,$student->password) && $student->type == 0){
                     Session::put('frontSession',$student);
                     Session::put('type','student');
                 }
@@ -56,23 +57,28 @@ public function register(Request $request){
     if($request->isMethod('post')){
         $data = $request->all();
 
-        $studentCount = Student::where('email',$data['email'])->count();
-        $lecturerCount = Lecturers::where('email',$data['email'])->count();
-        if($studentCount>0 || $lecturerCount>0){
-            return redirect()->back()->with('flash_message_error','Email already exists!');
-        }else{
+        $usersnameCount = User::where('username',$data['username'])->count();
+        $usersemailCount = User::where('email',$data['email'])->count();
+        if($usersnameCount>0){
+            return redirect()->back()->with('flash_message_error','User Name already exists!');
+        }
+        else if($usersemailCount>0){
+            return redirect()->back()->with('flash_message_error','User Email already exists!');
+        }
+        else{
             if($data['tabel'] == 'student'){
-                $student = new Student;
+                $student = new User;
                 $student->fullName = $data['name'];
                 $student->username = $data['username'];
                 $student->email = $data['email'];
+                $student->type = 0;
                 /*if($data['password']!=$data['rePassword']){
                     return redirect()->back()->with('flash_message_error','Passwords are not matched!');
                 }*/
                 $student->password = bcrypt($data['password']);
                 $student->save();
                 
-                $student = Student::where('email',$data['email'])->first();
+                $student = User::where('email',$data['email'])->first();
                 $password = $data['password'];
                 if(!empty($student) && Hash::check($password,$student->password)){
                     Session::put('frontSession',$student);
@@ -81,14 +87,15 @@ public function register(Request $request){
                 return redirect('/homeStudent');
             }
             else {
-                $lecturer = new Lecturers;
+                $lecturer = new User;
                 $lecturer->fullName = $data['name'];
                 $lecturer->username = $data['username'];
                 $lecturer->email = $data['email'];
+                $lecturer->type = 1;
                 $lecturer->title = $data['title'];
                 $lecturer->password = bcrypt($data['password']);
                 $lecturer->save();
-                $lecturer = Lecturers::where('email',$data['email'])->first();
+                $lecturer = User::where('email',$data['email'])->first();
                 $password = $data['password'];
                 if(!empty($lecturer) && Hash::check($password,$lecturer->password)){
                     Session::put('frontSession',$lecturer);

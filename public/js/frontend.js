@@ -7,8 +7,15 @@ $(document).ready(function () {
 
     //-------------------------------------------
 
+    $('.add-description-button').click(function () {
+        $('.add-description').fadeIn(400);
+    });
+
+
+    //-------------------------------------------
+
     $('.cancel').click(function () {
-        $('.add-video').fadeOut(400);
+        $('.add-video, .add-description').fadeOut(400);
     });
 
     //-------------------------------------------
@@ -18,5 +25,15 @@ $(document).ready(function () {
     });
 
     //-------------------------------------------
+
+    $(".start-exam").click(function () {
+        return confirm("Are you sure that you want to start the exam now?");
+    });
+
+    //-------------------------------------------
+
+    $(".delete-exam").click(function () {
+        return confirm("Are you sure that you want to delete the course exam?");
+    });
 
 });

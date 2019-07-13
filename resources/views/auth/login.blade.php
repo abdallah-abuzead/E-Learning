@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     <title>Online Courses</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/question.png')}}"/>
 </head>
-<body>
+<body>  
 <div class="container login">
     <div class="row">
         <div class="col-md-3 login-left">
@@ -40,6 +40,9 @@
                 </li>
             </ul>
             <div class="tab-content">
+            @if(Session::has('flash_message_error'))
+                <p class="alert alert-info" style='width:300px;'>{{ Session::get('flash_message_error') }}</p>
+                @endif
                 <div class="tab-pane fade show active" id="lecturer" role="tabpanel"
                     aria-labelledby="lecturer-tab">
                     <form action="{{ url('/user-login') }}" method="post">

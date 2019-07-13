@@ -1,4 +1,3 @@
-@extends('include')
 @extends('navbar')
 
 @section('content')

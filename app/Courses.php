@@ -11,7 +11,7 @@ class Courses extends Model
     protected $fillable = ['subject','description','level','cost','numOfHours', 'lec_id'];
     public function lecturer()
     {
-        return $this->belongsTo('App\Lecturers','lec_id');
+        return $this->belongsTo('App\User','lec_id');
     }
     public function videos()
     {
@@ -19,10 +19,12 @@ class Courses extends Model
     }
     public function students()
     {
+        //return $this->belongsToMany(Student::class, 'courses_student' ,'course_id')->withPivot('commulativeGrade');
+        return $this->belongsToMany(User::class , 'courses_student' ,'course_id','student_id')->withPivot('commulativeGrade');
 
-//        return $this->belongsToMany(Student::class, 'courses_student' ,'course_id')->withPivot('commulativeGrade');
-
-        return $this->belongsToMany(Student::class , 'courses_student' ,'course_id','student_id')->withPivot('commulativeGrade');
-
+    }
+    public function descriptions()
+    {
+        return $this->hasMany('App\Description', 'course_id');
     }
 }

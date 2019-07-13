@@ -1,5 +1,6 @@
 @extends('include')
 
+@section('navbar')
 <div class="upper-bar">
     <div class="container">
 
@@ -8,17 +9,17 @@
         <div class="btn-group my-info">
                         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             {{--user logged in--}}
-                            {{--{{Session::get('frontSession')->name}}--}}
-                            Abdallah
+                            {{Session::get('frontSession')->username}}
+                            
                             <span class="caret"></span>
                         </span>
             <ul class="dropdown-menu">
-                <li><a href="#">My Profile</a></li>
-                <li><a href="profile.php#my-courses">My Courses</a></li>
-                <li><a href="#">Edit Profile</a></li>
+                <li><a href="{{url('/student-profile/'.Session::get('frontSession')->id)}}">My Profile</a></li>
+                <!-- <li><a href="profile.php#my-courses">My Courses</a></li> -->
+                <!-- <li><a href="#">Edit Profile</a></li> -->
                 @if(Session::get('type')=='lecturer')
-                <li><a href="Courses/create">New Course</a></li>
-                <li><a href="product/create">New Exam</a></li>
+                <li><a href="{{url('Courses/create')}}">New Course</a></li>
+                <li><a href="#">New Exam</a></li>
                 @endif
                 <li><a href="{{ url('/user-logout') }}">Log out</a></li>
             </ul>
@@ -37,9 +38,9 @@
         <div class="navbar-header"><a class="navbar-brand" href="/home">E-Courses</a></div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav " style="font-size: 18px;">
-                <li><a href="/home">Home</a></li>
+                <li><a href="{{url('/home')}}">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="/homeStudent">Courses</a></li>
+                <li><a href="{{url('/homeStudent')}}">Courses</a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <div class="form-group">
@@ -53,3 +54,4 @@
 <br><br><br>
 
 @yield('content')
+@endsection

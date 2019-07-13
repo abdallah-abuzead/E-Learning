@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student; 
+use App\Student;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use App\Courses;
 use Session;
 
@@ -48,7 +50,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
+        $student = User::find($id);
         return view("studentProfile")->with("student", $student);
     }
 
@@ -60,10 +62,10 @@ class StudentController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        Session::flash('username', $request->input("username"));
-        Session::flash('email', $request->input("email"));
-        Session::flash('fullname', $request->input("fullname"));
-        Session::flash('password', $request->input("password"));
+        // Session::flash('username', $request->input("username"));
+        // Session::flash('email', $request->input("email"));
+        // Session::flash('fullname', $request->input("fullname"));
+        // Session::flash('password', $request->input("password"));
 
         return view("studentProfileEdit")->with("id", $id);
     }
@@ -77,12 +79,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
+        $student = User::find($id);
 
+        if(!Hash::check($request->get('oldPassword'),$student->password)){
+            return redirect()->back()->with('flash_message_error','old password is not correct');
+        }
         $student->username = $request->get('username');
         $student->email = $request->get('email');
         $student->fullName = $request->get('fullname');
-        $student->password = $request->get('password');
+        ////////////////
+        $student->password = bcrypt($request->get('password'));
         $student->save();
 
         return redirect("student-profile/$id");

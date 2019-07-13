@@ -1,5 +1,3 @@
-
-@extends('include')
 @extends('navbar')
 
 
@@ -101,7 +99,7 @@
             @endforeach
             <div class="from-group">
                 <label for="cost"> cost </label>
-                <input type="number" name="cost" id="cost" required class="form-control"/>
+                <input type="text" name="cost" id="cost" required class="form-control"/>
             </div>
             @foreach ($errors->get('cost') as $error)
 
@@ -120,19 +118,7 @@
                     {{$error}}
                 </label>
             @endforeach
-            <div class="from-group">
-                <label for="lectureID"> lectureID </label>
 
-                <select name="lectureID" id="lectureID" required class="form-control">
-                    @foreach($Lecturers as $Lecturer )
-                        <option value="{{$Lecturer->id}}">
-                            {{$Lecturer->fullName}}
-                        </option>
-                    @endforeach
-                </select>
-
-
-            </div>
 
             <input type="submit" value="INSERT" class="button button1" style="margin-left:200px;">
             <input type="reset" value="Cancel" class="button button2">

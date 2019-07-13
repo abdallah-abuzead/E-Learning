@@ -23,7 +23,8 @@ class CreateCourseTable extends Migration
             $table->unsignedBigInteger('lec_id');
             $table->timestamps();
 
-            $table->foreign('lec_id')->references('id')->on('lecturer')->onDelete('cascade');
+            //$table->foreign('lec_id')->references('id')->on('lecturer')->onDelete('cascade');
+            $table->foreign('lec_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

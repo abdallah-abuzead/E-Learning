@@ -7,7 +7,7 @@ use App\Student;
 use App\Videos;
 
 use App\Lecturers;
-
+use Session;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -29,7 +29,8 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        return view('Courses.create',['Lecturers'=>Lecturers::all()] );
+        // return view('Courses.create',['Lecturers'=>Lecturers::all()] );
+        return view('Courses.create');
 
     }
 
@@ -43,12 +44,12 @@ class CoursesController extends Controller
     {
 
         $this->validate($request,[
-            'Subject'=>'required|alpha',
-            'description'=>'required|alpha',
+            'Subject'=>'required',
+            'description'=>'required',
             'level'=>'required|alpha',
-            'cost'=>'required',
-            'NumberOfHours'=>'required',
-            'lectureID'=>'required',
+            'cost'=>'required|max:1000|regex:/^[0-9]+(?:\.[0-9]{1,2})?$/',
+            'NumberOfHours'=>'required|integer|min:1',
+            // 'lectureID'=>'required',
 
 
         ]);
@@ -60,7 +61,7 @@ class CoursesController extends Controller
         $courses->level = $request->input('level');
         $courses->cost = $request->input('cost');
         $courses->numOfHours = $request->input('NumberOfHours');
-        $courses->lec_id = $request->input('lectureID');
+        $courses->lec_id = Session::get('frontSession')->id;
 
         $courses->save();
         return redirect('/homeStudent');
@@ -78,15 +79,33 @@ class CoursesController extends Controller
     {
         $course = Courses::find($id);
         $videos = Videos::all()->where('course_id', $id);
+        $enrolled = false ;
         
+        foreach($course->students as $student){
+            if(!empty(Session::get('frontSession')) && $student->id == Session::get('frontSession')->id){
+                $enrolled = true;
+                break;
+            }
+        }
         //dd($course->students[0]->pivot->commulativeGrade);
-        return view("courseProfile")->with(compact('course', 'videos'));
+        return view("courseProfile")->with(compact('course', 'videos','enrolled'));
     }
 
     public function enroll($id)
     {
         $course = Courses::find($id);
-        return view("enrollCourse")->with("course", $course);
+        $videos = Videos::all()->where('course_id', $id);
+        $enrolled = false ;
+        
+        foreach($course->students as $student){
+            if($student->id == Session::get('frontSession')->id){
+                $enrolled = true;
+                break;
+            }
+        }
+        // we should make the enrollment here
+        return view("courseProfile")->with(compact('course', 'videos','enrolled'));
+        //return view("enrollCourse")->with("course", $course);
     }
 
 

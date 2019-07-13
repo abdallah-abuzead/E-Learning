@@ -16,24 +16,35 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'fullName', 'profilePicUrl' ,'title' , 'type' ,
     ];
+
+
+    public function coursesEnrolled()
+    {
+        return $this->belongsToMany(Courses::class , 'courses_student' ,'student_id', 'course_id')->withPivot('commulativeGrade');
+    }
+
+    public function coursesCreated()
+    {
+        return $this->hasMany('App\Courses','lec_id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
+    /*protected $hidden = [
         'password', 'remember_token',
-    ];
+    ];*/
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
+    /*protected $casts = [
         'email_verified_at' => 'datetime',
-    ];
+    ];*/
 }

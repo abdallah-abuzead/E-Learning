@@ -28,7 +28,7 @@ h1{
     font-size: 28px;
 }
 
-.dropdown-menu{
+.dropdown-menu, .sitting{
     background-color: #dde1f1;
     padding: 0;
 }
@@ -96,10 +96,10 @@ h1{
     width: 120px;
 }
 
-.add-video{
+.add-video, .add-description, .update-description{
     padding: 10px;
     width: 500px;
-    height: 260px;
+    /*height: 260px;*/
     position: fixed;
     left: 520px;
     top:150px;
@@ -112,6 +112,50 @@ h1{
 
 .cancel{
     margin-top: 10px;
+}
+
+.sitting{
+    background: #fff;
+}
+
+.sitting>li>a:hover{
+    background: #b90000;
+    color: #fff;
+}
+
+.description{
+    background: #fff;
+    padding: 20px 0px 20px 1px;
+    border: 1px solid #9d9d9d;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.description .desc{
+    padding: 7px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.desc li{
+    display: inline-block;
+    margin-left: 35px;
+    width: 800px;
+}
+
+.desc:hover{
+    background: #eee;
+}
+
+.description .desc .hidden-control{
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    top: 7px;
+    right: -130px;
+}
+
+.description .desc:hover .hidden-control{
+    right: 30px;
 }
 
 .enroll{
@@ -127,6 +171,20 @@ h1{
     border: 1px solid #000;
     border-radius: 0px;
     overflow: hidden;
+}
+
+.start-exam, .start-exam:hover{
+    background: #337AFF;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.start-exam:hover{
+    background-color: #adaa8b;
+    box-shadow: 2px 6px 8px #aaa;
+    color: #000;
 }
 
 .comment-box{
@@ -145,7 +203,7 @@ h1{
     margin-top: 20px;
     border-radius: 10px;
     width: 650px;
-    /*font-size: 20px;*/
+    font-size: 18px;
 }
 
 .comment-box .lead:before{

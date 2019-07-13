@@ -16,7 +16,7 @@ class Videos extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('url');
+            $table->string('video');
             $table->unsignedBigInteger('course_id');
             $table->timestamps();
             $table->foreign('course_id')->references('id')->on('course')->onDelete('cascade');

@@ -17,12 +17,13 @@ class CreateStudentHasCourseTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id'); 
             $table->unsignedBigInteger('course_id'); 
-            $table->unique(['student_id', 'course_id']); 
+            $table->unique(['student_id', 'course_id']);
 
             $table->unsignedInteger('commulativeGrade')->nullable();
-            $table->timestamps(); 
+            $table->timestamps();
 
-            $table->foreign('student_id')->references('id')->on('student')->onDelete('cascade'); 
+            //$table->foreign('student_id')->references('id')->on('student')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->foreign('course_id')->references('id')->on('course')->onDelete('cascade'); 
         });
     }

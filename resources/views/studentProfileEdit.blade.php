@@ -1,4 +1,3 @@
-@extends('include')
 @extends('navbar')
 
 <link rel="stylesheet" href="{{ asset('css/student-profileStyle.css') }}">
@@ -13,36 +12,43 @@
         <div class="container">
             <div class="panel panel-primary">
                 <div class="panel-heading">My Information</div>
+                @if(Session::has('flash_message_error'))
+                <p class="alert alert-info">{{ Session::get('flash_message_error') }}</p>
+                @endif
                 <div class="panel-body">
-                    <form action={{ url("/student-profile-save/$id") }} method="post">
+                    <form action='{{ url("/student-profile-save/$id") }}' method="post" id='form'>
                         {{ csrf_field() }}
                     <ul class="list-unstyled">
                         <li>
                             <i class="fa fa-unlock-alt fa-fw"></i>
                             <label for="username">Login Name</label>
-                            <input type="text" class="form-text form-control" name="username" id="username" value="{{ Session::get('username') }}" required>
+                            <input type="text" class="form-text form-control" name="username" id="username" value="{{ Session::get('frontSession')->username }}" required>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
                             <label for="email">Email</label>
-                            <input type="email" class="form-text form-control" name="email" id="email" value="{{ Session::get('email') }}" required>
+                            <input type="email" class="form-text form-control" name="email" id="email" value="{{ Session::get('frontSession')->email }}" required>
                         </li>
                         <li>
                             <i class="fa fa-user fa-fw"></i>
                             <label for="fullname">Full Name</label>
-                            <input type="text" class="form-text form-control" name="fullname" id="fullname" value="{{ Session::get('fullname') }}" required>
+                            <input type="text" class="form-text form-control" name="fullname" id="fullname" value="{{ Session::get('frontSession')->fullName }}" required>
                         </li>
                         <li>
                             <i class="fa fa-calendar-alt fa-fw"></i>
                             <label for="password">Password</label>
 
                             <div class="show-pass">
-                                <input type="password" class="form-text form-control" name="password" id="password" value="{{ Session::get('password') }}" minlength="8" required>
-                                <span class="fa fa-eye"></span>
+                                <input type="password" class="form-text form-control" name="password" id="password" value="" minlength="8" required>
+                                <!-- <span class="fa fa-eye" id='span'></span> -->
                             </div>
 
-                            <div class="hidden-confirm"> 
+                            <div class="hidden-confirm">
                                 <input type="password" class="form-text form-control" name="-confirm-password" id="confirm-password" placeholder="Confirm Password">
+                            </div>
+
+                            <div class="hidden-confirm">
+                                <input type="password" class="form-text form-control" name="oldPassword" id="oldPassword" placeholder="Old Password">
                             </div>
                         </li>
                     </ul>
@@ -67,7 +73,8 @@
             $(".hidden-confirm").hide();
 
 
-            $(".show-pass span").click(function (e) {
+            $(".show-pass #span").on('click',function () {
+                alert('d5al');
                 $(this).toggleClass("fa-eye");
                 $(this).toggleClass("fa-eye-slash");
 
@@ -101,7 +108,7 @@
                     $edited = true;
                 }
 
-                console.log($(".hidden-confirm").hidden);
+                //console.log($(".hidden-confirm").hidden);
 
                 if($hidden) {
                     $(".hidden-confirm").show(300);
@@ -109,7 +116,7 @@
                 }
             });
 
-            $(".save-discard input:submit").click(function (e) {
+            $("#form").on("submit",function (e) {
                 if(!$hidden) {
                     if($("#password").val() != $("#confirm-password").val()) {
                         e.preventDefault();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLecturerTable extends Migration
+class Description extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateLecturerTable extends Migration
      */
     public function up()
     {
-        Schema::create('lecturer', function (Blueprint $table) {
+        Schema::create('description', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('fullName');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('email'); 
-            $table->string('title')->nullable();
+            $table->longText('description');
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('course')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -31,6 +30,6 @@ class CreateLecturerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lecturer');
+        Schema::dropIfExists('description');
     }
 }
