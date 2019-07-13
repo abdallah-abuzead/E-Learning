@@ -88,15 +88,33 @@
                 </label>
             @endforeach
             <div class="from-group">
-                <label for="level"> level </label>
-                <input type="text" name="level" required  id="level" class="form-control"/>
-            </div>
-            @foreach ($errors->get('level') as $error)
+    <label for="level"> level </label>
 
-                <label style="color: red">
-                    {{$error}}
-                </label>
-            @endforeach
+    <select name="level" id="level" required class="form-control">
+
+        <option value="Beginner">
+            Beginner
+        </option>
+        <option value="Elementary">
+            Elementary
+        </option>
+        <option value="intermediate">
+            intermediate
+        </option>
+
+        <option value="advanced">
+            advanced
+        </option>
+
+    </select>
+
+</div>
+@foreach ($errors->get('level') as $error)
+
+    <label style="color: red">
+        {{$error}}
+    </label>
+@endforeach
             <div class="from-group">
                 <label for="cost"> cost </label>
                 <input type="text" name="cost" id="cost" required class="form-control"/>

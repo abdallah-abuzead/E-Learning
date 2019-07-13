@@ -47,20 +47,20 @@
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name *"
-                                    name="name" required/>
+                                    <input type="text" class="form-control" placeholder="Full Name *"
+                                    name="name" required autocomplete='off'/>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Username *"
-                                    name="username" required/>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" 
-                                    placeholder="Password *" name="password" minlength="8" required/>
+                                    name="username" required autocomplete='off'/>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Email *" 
                                     name="email" required/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" 
+                                    placeholder="Password *" name="password" minlength="8" required autocomplete='off'/>
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" name="title" form="lecRegister" 
@@ -82,20 +82,20 @@
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name *"
-                                    name="name" required/>
+                                    <input type="text" class="form-control" placeholder="Full Name *"
+                                    name="name" required autocomplete='off'/>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Username *"
-                                    name="username" required/>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" 
-                                    placeholder="Password *" name="password" minlength="8" required/>
+                                    name="username" required autocomplete='off'/>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Email *" 
                                     name="email" required/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" 
+                                    placeholder="Password *" name="password" minlength="8" required autocomplete='off'/>
                                 </div>
                             </div>
                             <input type="hidden" name="tabel" value="student"> 

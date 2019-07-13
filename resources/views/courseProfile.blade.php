@@ -20,7 +20,7 @@
                     <li>
                         <i class="fa fa-calendar-alt fa-fw"></i>
                         <span>Added Date</span>:
-{{--                        {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course->created_at)->format("F j, Y, g:i a")}}--}}
+                        {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course->created_at)->format("F j, Y, g:i a")}}
                     </li>
                     <li>
                         <i class="fa fa-money-bill-alt fa-fw"></i>
