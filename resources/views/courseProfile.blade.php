@@ -3,7 +3,7 @@
 
     {{--Course Information=====================================================================================--}}
 
-    <h1 style="margin-top: -20px; margin-bottom: 50px; text-decoration: underline" class="text-center">{{$course->subject." Course"}}</h1>
+    <h1 style="margin-top: -20px; margin-bottom: 50px;" class="text-center">{{$course->subject." Course"}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -162,8 +162,7 @@
 
         {{--Show Videos Section================================================================================--}}
 
-        <div class="row">
-            <hr class="custom-hr">
+        <div class="row" style="border: 1px solid #ddd; padding: 20px; padding-bottom: 5px; border-radius: 5px; background: #fff;">
             <br>
             @foreach ($videos as $video)
                 <div class="col-sm-6 col-md-3">
@@ -191,16 +190,18 @@
 
         <h2>Comments</h2>
         <hr class="custom-hr" style="margin-top: -1px;">
-        <div class='row'>
-            <div class="comment-box">
-                <div class='col-md-2 text-center'>
-                    <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
-                    aaaaaaaaaaaa
+        @foreach($course->comments as $comment)
+            <div class='row'>
+                <div class="comment-box">
+                    <div class='col-md-2 text-center'>
+                        <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
+                        {{Session::get('frontSession')->fullName}}
+                    </div>
+                    <div class='col-md-10 lead'>{{$comment->comment}}</div>
                 </div>
-                <div class='col-md-10 lead'>aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaa aasasasa asa  sa s as  as</div>
             </div>
-        </div>
-        <hr class="custom-hr">
+            <hr class="custom-hr">
+        @endforeach
 
         {{--Add Comment===========================================================================================--}}
 
@@ -210,7 +211,6 @@
                     <h3>Add Your Comment</h3>
                     <form action="/storeComment" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="hidden" name="user_id" value="{{Session::get('frontSession')->id}}">
                         <input type="hidden" name="course_id" value="{{$course->id}}">
                         <textarea name="comment" required></textarea>
                         <input type="submit" class="btn btn-primary" value="Add Comment">

@@ -204,6 +204,7 @@ h1{
     border-radius: 10px;
     width: 650px;
     font-size: 18px;
+    padding-bottom: 13px;
 }
 
 .comment-box .lead:before{

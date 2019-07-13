@@ -27,4 +27,9 @@ class Courses extends Model
     {
         return $this->hasMany('App\Description', 'course_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment','course_id');
+    }
 }

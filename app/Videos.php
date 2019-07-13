@@ -12,4 +12,8 @@ class Videos extends Model
     public function course(){
         return $this->belongsTo('App\Courses', 'course_id');
     }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment','video_id');
+    }
 }
