@@ -28,19 +28,7 @@
                 <label for="Subject"> Subject </label>
                 <input type="text" name="Subject" required id="Subject" class="form-control"/>
             </div>
-            <br>
             @foreach ($errors->get('Subject') as $error)
-                <label style="color: red">
-                    {{$error}}
-                </label>
-            @endforeach
-
-            <div class="from-group">
-                <label for="description"> Description </label>
-                <input type="text" name="description" required id="description"  class="form-control"/>
-            </div>
-            @foreach ($errors->get('description') as $error)
-
                 <label style="color: red">
                     {{$error}}
                 </label>
@@ -90,7 +78,7 @@
             @endforeach
             <br>
             <div class="from-group">
-                <label for="NumberOfHours"> NumberOfHours </label>
+                <label for="NumberOfHours"> Number Of Hours </label>
                 <input type="number" name="NumberOfHours" required id="NumberOfHours" class="form-control"/>
             </div>
             @foreach ($errors->get('NumberOfHours') as $error)

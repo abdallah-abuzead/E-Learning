@@ -1,7 +1,7 @@
 @extends('navbar')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="border: 1px solid #ddd; padding: 20px; padding-bottom: 5px; border-radius: 5px;" >
         <div class="row">
             @foreach ($courses as $course)
             <div class="col-sm-6 col-md-4">
