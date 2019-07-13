@@ -75,7 +75,8 @@ Route::get('/deleteVideo/{id}', 'VideoController@destroyVideo');
 Route::get('/createExam', 'ExamController@create')->name('createexam');
 Route::get('/deleteExam', 'ExamController@distroy')->name('deleteexam');
 Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
-Route::get('/storeComment' , 'CommentController@store');
+
+Route::post('/storeComment' , 'CommentController@store')->name('storecomment');
 });
 
 Route::get('search', 'CoursesController@search')->name('search');

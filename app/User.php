@@ -30,6 +30,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Courses','lec_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment','user_id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

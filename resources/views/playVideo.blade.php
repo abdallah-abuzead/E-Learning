@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <a href="/courses/{{$course->id}}">
-            <h1 style="margin-top: -20px; margin-left: 15px; text-decoration: underline">{{$course->subject." Course"}}</h1>
+        <a href="/courses/{{$course->id}}" style="text-decoration: none;">
+            <h1 style="margin-top: -20px; margin-left: 15px;">{{$course->subject." Course"}}</h1>
         </a>
         <br>
         <div class="col-sm-6 col-md-9">
@@ -63,25 +63,25 @@
 
         <h2>Comments</h2>
         <hr class="custom-hr">
-        <div class='row'>
-            <div class="comment-box">
-                <div class='col-md-2 text-center'>
-                    <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
-                    aaaaaaaaaaaa
+        @foreach($videos[0]->comments as $comment)
+            <div class='row'>
+                <div class="comment-box">
+                    <div class='col-md-2 text-center'>
+                        <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
+                        {{Session::get('frontSession')->fullName}}
+                    </div>
+                    <div class='col-md-10 lead'>{{$comment->comment}}</div>
                 </div>
-                <div class='col-md-10 lead'>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
             </div>
-        </div>
-        <hr class="custom-hr">
+            <hr class="custom-hr">
+        @endforeach
 
         <div class="row">
             <div class="col-md-offset-3">
                 <div class="add-comment">
                     <h3>Add Your Comment</h3>
-                    <form action="#" method="post">
+                    <form action="/storeComment" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="hidden" name="user_id" value="{{Session::get('frontSession')->id}}">
-                        <input type="hidden" name="course_id" value="{{$course->id}}">
                         <input type="hidden" name="video_id" value="{{$videos[0]->id}}">
                         <textarea name="comment" required></textarea>
                         <input type="submit" class="btn btn-primary" value="Add Comment">

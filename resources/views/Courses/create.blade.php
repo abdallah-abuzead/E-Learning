@@ -6,62 +6,20 @@
 
     <style>
 
-        .contant{
-
-            height: auto;
-            width: 60%;
+        .content{
+            width: 40%;
             background-color:white;
-            margin-left: 230px;
-            margin-top: 10px;
+            margin: 20px auto;
             border-radius: 20px;
-            padding:26px;
+            padding:10px 20px;
+            box-shadow: 5px 5px 5px #ccc;
 
-        }
-        .button {
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 15px;
-            margin: 4px 2px;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            cursor: pointer;
-            border-radius: 10px;
-
-        }
-
-        .button1 {
-            color: black;
-            background-color: #5cd08d;
-        }
-
-        .button1:hover {
-            background-color: #007bff;
-            color: white;
-        }
-        .button1:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        }
-
-        .button2 {
-            color: black;
-            background-color: #ff0000;
-        }
-
-        .button2:hover {
-            background-color: #5e5e5e;
-            color: white;
-        }
-        .button2:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
         }
 
     </style>
-    <center> <h1>Add New Course</h1></center>
+     <h1 class="text-center" style="margin-top: -30px;">Add New Course</h1>
 
-    <div class="contant">
+    <div class="content">
 
         <form action="/Courses/create" method="POST">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -70,45 +28,38 @@
                 <label for="Subject"> Subject </label>
                 <input type="text" name="Subject" required id="Subject" class="form-control"/>
             </div>
-
             @foreach ($errors->get('Subject') as $error)
                 <label style="color: red">
                     {{$error}}
                 </label>
             @endforeach
-
+            <br>
             <div class="from-group">
-                <label for="description"> description </label>
-                <input type="text" name="description" required id="description"  class="form-control"/>
-            </div>
-            @foreach ($errors->get('description') as $error)
-
-                <label style="color: red">
-                    {{$error}}
-                </label>
-            @endforeach
-            <div class="from-group">
-    <label for="level"> level </label>
+    <label for="level"> Level </label>
 
     <select name="level" id="level" required class="form-control">
 
+        <option value="..." readonly>...</option>
         <option value="Beginner">
             Beginner
         </option>
-        <option value="Elementary">
-            Elementary
+        <option value="Intermediate">
+            Intermediate
         </option>
-        <option value="intermediate">
-            intermediate
+        <option value="Advanced">
+            Advanced
         </option>
-
-        <option value="advanced">
-            advanced
+        <option value="Master">
+            Master
+        </option>
+        <option value="PhD">
+            PhD
         </option>
 
     </select>
 
 </div>
+            <br>
 @foreach ($errors->get('level') as $error)
 
     <label style="color: red">
@@ -116,7 +67,7 @@
     </label>
 @endforeach
             <div class="from-group">
-                <label for="cost"> cost </label>
+                <label for="cost"> Cost </label>
                 <input type="text" name="cost" id="cost" required class="form-control"/>
             </div>
             @foreach ($errors->get('cost') as $error)
@@ -125,9 +76,9 @@
                     {{$error}}
                 </label>
             @endforeach
-
+            <br>
             <div class="from-group">
-                <label for="NumberOfHours"> NumberOfHours </label>
+                <label for="NumberOfHours"> Number Of Hours </label>
                 <input type="number" name="NumberOfHours" required id="NumberOfHours" class="form-control"/>
             </div>
             @foreach ($errors->get('NumberOfHours') as $error)
@@ -136,12 +87,13 @@
                     {{$error}}
                 </label>
             @endforeach
+            <br>
 
-
-            <input type="submit" value="INSERT" class="button button1" style="margin-left:200px;">
-            <input type="reset" value="Cancel" class="button button2">
+            <input type="submit" value="Add Course" class="btn btn-primary">
+            <input type="reset" value="Cancel" class="btn btn-danger">
 
         </form>
 
     </div>
+    <br><br><br>
 @endsection

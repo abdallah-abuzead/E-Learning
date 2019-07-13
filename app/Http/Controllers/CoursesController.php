@@ -45,7 +45,6 @@ class CoursesController extends Controller
 
         $this->validate($request,[
             'Subject'=>'required',
-            'description'=>'required',
             'level'=>'required|alpha',
             'cost'=>'required|max:1000|regex:/^[0-9]+(?:\.[0-9]{1,2})?$/',
             'NumberOfHours'=>'required|integer|min:1',
@@ -57,7 +56,6 @@ class CoursesController extends Controller
         $courses = new Courses();
 
         $courses->subject = $request->input('Subject');
-        $courses->description = $request->input('description');
         $courses->level = $request->input('level');
         $courses->cost = $request->input('cost');
         $courses->numOfHours = $request->input('NumberOfHours');

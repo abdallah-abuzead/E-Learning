@@ -30,5 +30,10 @@ class Courses extends Model
     public function exam()
     {
         return $this->hasOne('App\Exam','course_id');
+
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment','course_id');
     }
 }
