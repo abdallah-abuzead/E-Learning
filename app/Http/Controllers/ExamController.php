@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exam;
+use App\Option;
+use App\Question;
 use Illuminate\Http\Request;
+use Session;
 
 class ExamController extends Controller
 {
@@ -23,7 +27,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+        return view("addExam");
     }
 
     /**
@@ -34,7 +38,64 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $exam = new Exam();
+       $exam->title = $request->get('title');
+       $duration = $request->get('h').":".$request->get('m');
+       $exam->duration = $duration;
+       //$exam->duration = $request->get('duration');
+       $exam->course_id = Session::get('courseId');
+       $exam->save();
+       Session::forget('courseId');
+       Session::put("exam_id", $exam->id);
+       Session::put("exam_title", $exam->title);
+
+        return view("addQuestions");
+    }
+
+    public function storeQuestion(Request $request)
+    {
+        $question = new Question();
+        $question->title = $request->get('title');
+        $question->mark = $request->get('mark');
+        $question->exam_id = Session::get('exam_id');
+
+        $question->save();
+
+        $options = ['A', 'B', 'C', 'D'];
+
+        for($i = 0; $i < count($options); $i++) {
+            if($request->exists("$options[$i]")) {
+                $option = new Option();
+
+                $option->value = $request->get("$options[$i]");
+                $option->quest_id = $question->id;
+                $option->save();
+
+                if($request->get('correct-ans') == $i) {
+                    $question->correct_ans = $option->id;
+                    $question->save();
+                }
+            } else {
+                break;
+            }
+        }
+
+        $questions = Question::all()->where("exam_id", Session::get('exam_id'));
+        return view("addQuestions")->with('questions', $questions);
+    }
+
+    public function deleteQuestion($id) {
+        $question = Question::find($id);
+
+        $options = Option::all()->where("quest_id", $id);
+
+        foreach ($options as $option) {
+            $option->delete();
+        }
+        $question->delete();
+
+        $questions = Question::all()->where("exam_id", Session::get('exam_id'));
+        return view("addQuestions")->with('questions', $questions);
     }
 
     /**
@@ -79,6 +140,7 @@ class ExamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $exam =Exam::find($id);
+        $exam->delete();
     }
 }

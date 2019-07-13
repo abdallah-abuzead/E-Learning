@@ -8,7 +8,7 @@ class Exam extends Model
 {
     protected $table = 'exam';
     protected $primaryKey = 'id';
-    protected $fillable = ['duration'];
+    protected $fillable = ['duration', 'course_id'];
     public function course()
     {
         return $this->belongsTo('App\Courses','course_id');

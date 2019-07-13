@@ -1,5 +1,4 @@
 @extends('include')
-
 @section('navbar')
 <div class="upper-bar">
     <div class="container">
@@ -42,11 +41,11 @@
                 <li><a href="#">About</a></li>
                 <li><a href="{{url('/homeStudent')}}">Courses</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
+            <form class="navbar-form navbar-right" action="{{route('search')}}">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" style="width: 250px">
+                    <input type="text" name="word" class="form-control" placeholder="Search" style="width: 250px">
+                    <button type='submit' class="btn btn-primary">Submit</button>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
     </div>

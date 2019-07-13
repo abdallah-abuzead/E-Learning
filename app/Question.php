@@ -8,10 +8,14 @@ class Question extends Model
 {
     protected $table = 'question';
     protected $primaryKey = 'id';
-    protected $fillable = ['title', 'mark'];
+    protected $fillable = ['title', 'mark', 'correct_ans', 'exam_id'];
     public function exam()
     {
-        return $this->belongsTo('App\Exam','exam_id');
+        return $this->belongsTo('App\Exam', 'exam_id');
+    }
+    public function correctAnswer()
+    {
+        return $this->belongsTo('App\Option', 'correct_ans');
     }
     public function options()
     {
