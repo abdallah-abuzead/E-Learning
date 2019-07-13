@@ -9,7 +9,7 @@
         <div class="col-sm-6 col-md-9">
             <div class="thumbnail " >
                 <video width="815" height="500" controls>
-                    <source src="{{asset("courses/".$course->subject."_".$course->id."/".$videos[0]->video)}}"
+                    <source src='{{asset("courses/".$course->subject."_".$course->id."/".$videos[0]->video)}}'
                             type="video/{{$videos[0]->extension}}">
                 </video>
                 <div class="caption">

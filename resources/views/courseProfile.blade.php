@@ -11,24 +11,27 @@
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
-                <p>inline description</p>
+                <p>{{$course->level}}</p>
                 <ul class="list-unstyled">
                     <li>
                         <i class="fa fa-user fa-fw"></i>
-                        <span>Added by</span>: <a href="#">{{$course->lecturer->username}}</a>
+                        <span>Added by</span>: <a href="/student-profile/{{$course->lecturer->id}}">{{$course->lecturer->username}}</a>
                     </li>
                     <li>
                         <i class="fa fa-calendar-alt fa-fw"></i>
                         <span>Added Date</span>:
-                        {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course->created_at)->format("F j, Y, g:i a")}}
+                        {{--{{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course->created_at)->format("F j, Y, g:i a")}} --}}
+                        {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $course->created_at)->format("F j, Y")}}
                     </li>
                     <li>
                         <i class="fa fa-money-bill-alt fa-fw"></i>
                         <span>Cost</span>:
+                        {{$course->cost}}
                     </li>
                     <li>
                         <i class="fa fa-building fa-fw"></i>
                         <span>NO. of hours</span>:
+                        {{$course->numOfHours}}
                     </li>
                 </ul>
             </div>
@@ -49,19 +52,22 @@
                             <span class="caret"></span>
                         </span>
                 <ul class="dropdown-menu sitting">
-                    <li>
+                    <!-- <li>
                         <a href="/editCourse/{{$course->id}}">
                             <i class="fa fa-edit"> </i>  Edit Course
                         </a>
-                    </li>
-                    <li><a href="/createExam/{{$course->id}}">
+                    </li> -->
+                    @if(empty($course->exam))
+                    <li><a href="/add-exam">
+                    {{Session::put("courseId", $course->id)}}
                             <i class="fa fa-plus"> </i>  Add Exam
                         </a>
                     </li>
-                    <li><a href="/deleteExam/{{$course->id}}" class="delete-exam">
+                    @endif
+                    <!-- <li><a href="/deleteExam/{{$course->id}}" class="delete-exam">
                             <i class="fa fa-window-close"> </i>  Delete Exam
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         @endif
@@ -150,18 +156,18 @@
 
         {{--Check Enrollment==================================================================================--}}
         
-        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
-            <a class="btn btn-success btn-lg enroll" href="">Watch Videos</a>
-        @else
+        @if( !$enrolled && Session::get('frontSession')->id!=$course->lec_id)
+            <!-- <a class="btn btn-success btn-lg enroll" href="">Watch Videos</a> -->
             <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">
                 Enroll Now
-                <span>${{$course->price}}</span>
+                <span>@if($course->cost>0)${{$course->cost}} @endif</span>
             </a>
         @endif
         <br>
 
         {{--Show Videos Section================================================================================--}}
 
+        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
         <div class="row">
             <hr class="custom-hr">
             <br>
@@ -176,15 +182,17 @@
                             <h5><a href="/playVideo/{{$video->id}}" style="color: #FFF;">{{$video->name}}</a></h5>
                         </div>
                     </div>
-                    {{--{{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $video->created_at)->format("F j, Y, g:i a")}}--}}
+                    {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $video->created_at)->format("F j, Y, g:i a")}}
                 </div>
             @endforeach
         </div>
+        @endif
         <br><br>
 
         {{--Start Exam===========================================================================================--}}
-
+        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
         <a href="/startExam/{{$course->id}}" class="start-exam">Start {{$course->subject}} Exam!</a>
+        @endif
         <br><br><br>
 
         {{--View Course Comments==================================================================================--}}
@@ -203,7 +211,7 @@
         <hr class="custom-hr">
 
         {{--Add Comment===========================================================================================--}}
-
+        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
         <div class="row">
             <div class="col-md-offset-3">
                 <div class="add-comment">
@@ -218,6 +226,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <br><br>
 
         {{--Delete Course=======================================================================================--}}

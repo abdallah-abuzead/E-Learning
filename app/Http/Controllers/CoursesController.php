@@ -80,7 +80,6 @@ class CoursesController extends Controller
         $course = Courses::find($id);
         $videos = Videos::all()->where('course_id', $id);
         $enrolled = false ;
-        
         foreach($course->students as $student){
             if(!empty(Session::get('frontSession')) && $student->id == Session::get('frontSession')->id){
                 $enrolled = true;
@@ -96,6 +95,8 @@ class CoursesController extends Controller
         $course = Courses::find($id);
         $videos = Videos::all()->where('course_id', $id);
         $enrolled = false ;
+
+        $course->students()->attach(Session::get('frontSession')->id);
         
         foreach($course->students as $student){
             if($student->id == Session::get('frontSession')->id){
@@ -154,5 +155,11 @@ class CoursesController extends Controller
         }
         $course->delete();
         return redirect('/homeStudent');
+    }
+    public function search()
+    {
+        $word = request('word');
+        $courses = Courses::where('subject', 'like', "%$word%")->orWhere('cost', 'like', "%$word%")->get();
+        return view('homeStudent', compact('courses'));
     }
 }

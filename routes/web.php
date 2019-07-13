@@ -27,12 +27,20 @@ Route::post('/user-register','UserController@register');
 Route::post('/user-login','UserController@login');
 Route::match(['get', 'post'],'/user-logout','UserController@logout'); 
 
-Route::get('/home', 'HomeController@homeStudent')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homeStudent', 'HomeController@homeStudent')->name('homeStu');
 Route::get('/courses/{id}', 'CoursesController@show')->name('course');
 Route::get('/student-profile/{id}', 'StudentController@show')->name('studentProfile');
+
 Route::get('/student-profile-edit/{id}', 'StudentController@edit')->name('studentProfileEdit');
 Route::post('/student-profile-save/{id}', 'StudentController@update')->name('studentProfileSave');
+////////////////////////////// exam
+Route::get('/add-exam', 'ExamController@create')->name('createExam');
+//Route::post('/add-questions', 'ExamController@store')->name('storeExam-addQuestions');
+Route::post('/store-question', 'ExamController@storeQuestion')->name('storeQuestion');
+Route::get('/add-questions', 'ExamController@store')->name('storeExam-addQuestions');
+Route::get('/delete-question/{id}', 'ExamController@deleteQuestion')->name('deleteQuestion');
+////////////////////////////// end exam
 
 Route::group(['middleware'=>['frontLogin']], function() {
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
@@ -69,5 +77,7 @@ Route::get('/deleteExam', 'ExamController@distroy')->name('deleteexam');
 Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
 Route::get('/storeComment' , 'CommentController@store');
 });
+
+Route::get('search', 'CoursesController@search')->name('search');
 
 // Route::get('/deleteCourse/{id}' , 'CoursesController@destroy');
