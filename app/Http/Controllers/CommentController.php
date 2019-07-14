@@ -70,6 +70,11 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->delete();
+        if($comment->course_id == null)
+            return redirect('/playVideo/'.$comment->video_id);
+        else
+            return redirect('/courses/'.$comment->course_id);
     }
 }

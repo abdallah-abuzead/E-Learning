@@ -71,6 +71,19 @@
                         {{Session::get('frontSession')->fullName}}
                     </div>
                     <div class='col-md-10 lead'>{{$comment->comment}}</div>
+
+                    {{--Controle Comment==========================================================================--}}
+
+                    @if(Session::get('frontSession')->id == $comment->user_id)
+                        <div class="col-md-4"><br>
+                            <i class="fa fa-edit" style="cursor: pointer;"></i>
+                            <span style="margin-left: 20px;"></span>
+                            <a href="/deleteComment/{{$comment->id}}" style="color: #333;">
+                                <i class="fa fa-trash-alt"> </i>
+                            </a>
+                        </div>
+                    @endif
+
                 </div>
             </div>
             <hr class="custom-hr">

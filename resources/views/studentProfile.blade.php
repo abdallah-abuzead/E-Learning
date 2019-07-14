@@ -71,14 +71,8 @@
                         @foreach($student->coursesCreated as $course)
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail item-box">
-                                    <img class="img-responsive img-thumbnail" src="{{asset('images/course.jpg')}}">
+                                    <img class="img-responsive" src="{{asset('images/course.jpg')}}">
                                     <h3><a href="/courses/{{$course->id}}"> {{$course->subject}}</a></h3>
-                                    <div class="caption">
-                                        <details class="lecturer-detail">
-                                            <summary>Added by: <a href="#"> {{ $course->lecturer->fullName }} </a></summary>
-                                            <p> {{ $course->lecturer->title }} </p>
-                                        </details>
-                                    </div>
                                 </div>
                             </div>
                         @endforeach 
@@ -93,7 +87,7 @@
     <div id="my-items" class="my--ads block">
         <div class="container">
             <div class="panel panel-primary">
-                <div class="panel-heading">My Courses</div>
+                <div class="panel-heading">Enrolled Courses</div>
                 <div class="panel-body">
                     <div class='row'>
                     @if($student->coursesEnrolled->count() === 0)

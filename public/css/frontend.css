@@ -167,6 +167,7 @@ h1{
 }
 
 .video{
+    padding: 5px 3px;
     background: #333;
     border: 1px solid #000;
     border-radius: 0px;
@@ -202,7 +203,7 @@ h1{
     padding: 10px;
     margin-top: 20px;
     border-radius: 10px;
-    width: 650px;
+    /*width: 650px;*/
     font-size: 18px;
     padding-bottom: 13px;
 }

@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
-                <p>{{$course->level}}</p>
+                <p>{{$course->level}} Level</p>
                 <ul class="list-unstyled">
                     <li>
                         <i class="fa fa-user fa-fw"></i>
@@ -25,8 +25,7 @@
                     </li>
                     <li>
                         <i class="fa fa-money-bill-alt fa-fw"></i>
-                        <span>Cost</span>:
-                        {{$course->cost}}
+                        <span>Cost</span>: ${{$course->cost}}
                     </li>
                     <li>
                         <i class="fa fa-building fa-fw"></i>
@@ -174,8 +173,8 @@
             <br>
             @foreach ($videos as $video)
                 <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail video" style="max-height: 205px;">
-                        <video width="252" height="140">
+                    <div class="thumbnail video" style="max-height: 215px;">
+                        <video width="250" height="138">
                             <source src='{{asset("courses/".$course->subject."_".$course->id."/".$video->video)}}'
                                     type="video/{{$video->extension}}">
                         </video>
@@ -183,7 +182,7 @@
                             <h5><a href="/playVideo/{{$video->id}}" style="color: #FFF;">{{$video->name}}</a></h5>
                         </div>
                     </div>
-                    {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $video->created_at)->format("F j, Y, g:i a")}}
+{{--                    {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $video->created_at)->format("F j, Y, g:i a")}}--}}
                 </div>
             @endforeach
         </div>
@@ -207,7 +206,20 @@
                         <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
                         {{Session::get('frontSession')->fullName}}
                     </div>
-                    <div class='col-md-10 lead'>{{$comment->comment}}</div>
+                    <div class='col-md-6 lead'>{{$comment->comment}}</div>
+
+                    {{--Controle Comment==========================================================================--}}
+
+                    @if(Session::get('frontSession')->id == $comment->user_id)
+                        <div class="col-md-4"><br>
+                            <i class="fa fa-edit" style="cursor: pointer;"></i>
+                            <span style="margin-left: 20px;"></span>
+                            <a href="/deleteComment/{{$comment->id}}" style="color: #333;">
+                                <i class="fa fa-trash-alt"> </i>
+                            </a>
+                        </div>
+                    @endif
+
                 </div>
             </div>
             <hr class="custom-hr">

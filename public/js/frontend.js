@@ -36,4 +36,5 @@ $(document).ready(function () {
         return confirm("Are you sure that you want to delete the course exam?");
     });
 
+    //-------------------------------------------
 });

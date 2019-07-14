@@ -52,7 +52,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="save-discard">
+                    <div style="margin-left: 10px;">
                         <input type="submit" class="btn btn-success" value="Save Changes">
 
                         <a class="btn btn-danger" href="{{ url('/student-profile/'.$id) }}">
@@ -64,6 +64,8 @@
             </div>
         </div>
     </div>
+
+    <br><br>
 
     <script src="{{ asset('js/jQuery 4.3.1.js') }}"></script>
     <script>

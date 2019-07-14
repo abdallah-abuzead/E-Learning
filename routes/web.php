@@ -73,6 +73,7 @@ Route::get('/deleteExam', 'ExamController@distroy')->name('deleteexam');
 Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
 
 Route::post('/storeComment' , 'CommentController@store')->name('storecomment');
+Route::get('/deleteComment/{id}' , 'CommentController@destroy')->name('destroycomment');
 });
 
 Route::get('search', 'CoursesController@search')->name('search');
