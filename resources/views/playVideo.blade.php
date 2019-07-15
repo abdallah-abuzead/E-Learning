@@ -70,13 +70,24 @@
                         <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
                         {{Session::get('frontSession')->fullName}}
                     </div>
-                    <div class='col-md-10 lead'>{{$comment->comment}}</div>
+
+                    <form class="edit-comment-form" action="/updateComment/{{$comment->id}}" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <textarea name="comment" class='col-md-6 lead' style='background: #fff;' required>{{$comment->comment}}</textarea>
+                        <input type='submit' class='btn btn-primary' value='Save Changes' style='margin: 100px 0px 0px -195px;'>
+                    </form>
+                    <div style="display: none;">
+                        <button class='btn btn-danger discard' style="position: relative; left: 725px; top: -33px;">Discard</button>
+                        <hr class="custom-hr">
+                    </div>
+
+                    <div class='col-md-6 lead'>{{$comment->comment}}</div>
 
                     {{--Controle Comment==========================================================================--}}
 
                     @if(Session::get('frontSession')->id == $comment->user_id)
                         <div class="col-md-4"><br>
-                            <i class="fa fa-edit" style="cursor: pointer;"></i>
+                            <i class="fa fa-edit edit-comment" style="cursor: pointer;"></i>
                             <span style="margin-left: 20px;"></span>
                             <a href="/deleteComment/{{$comment->id}}" style="color: #333;">
                                 <i class="fa fa-trash-alt"> </i>

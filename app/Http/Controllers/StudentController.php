@@ -80,10 +80,20 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = User::find($id);
+        //-----------------------------------
+        if ($request->hasFile('profilePic')) {
+            $picNameWithExt = $request->file('profilePic')->getClientOriginalName();
+            $picName = pathinfo($picNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('profilePic')->getClientOriginalExtension();
+            $picNameToStore = $picName.time().".".$extension;
+            $request->file('profilePic')->move(base_path().'/public/profilePic/', $picNameToStore);
+        }
 
+        //-----------------------------------
         if(!Hash::check($request->get('oldPassword'),$student->password)){
             return redirect()->back()->with('flash_message_error','old password is not correct');
         }
+        $student->profilePic = $picNameToStore;
         $student->username = $request->get('username');
         $student->email = $request->get('email');
         $student->fullName = $request->get('fullname');

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="student-profileImg">
-        <img src="{{ asset('images/reading.png') }}" alt="student-profile">
+        <img class="img-responsive img-thumbnail" width="200px" height="150px;" src="{{ asset("profilePic/$student->profilePic") }}" alt="student-profile">
     </div>
 
     <h1 class="text-center profile-title">My Profile</h1>

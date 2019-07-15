@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="student-profileImg">
-        <img src="{{ asset('images/reading.png') }}" alt="student-profile">
+        <img class="img-responsive img-thumbnail" width="200px" height="150px;" src="{{ asset("profilePic/".Session::get('frontSession')->profilePic) }}" alt="student-profile">
     </div>
 
     <h1 class="text-center profile-title">My Profile</h1>
@@ -16,7 +16,7 @@
                 <p class="alert alert-info">{{ Session::get('flash_message_error') }}</p>
                 @endif
                 <div class="panel-body">
-                    <form action='{{ url("/student-profile-save/$id") }}' method="post" id='form'>
+                    <form action='{{ url("/student-profile-save/$id") }}' method="post" id='form' enctype="multipart/form-data">
                         {{ csrf_field() }}
                     <ul class="list-unstyled">
                         <li>
@@ -50,6 +50,10 @@
                             <div class="hidden-confirm">
                                 <input type="password" class="form-text form-control" name="oldPassword" id="oldPassword" placeholder="Old Password">
                             </div>
+                        </li>
+                        <li>
+                            <label for="fullname">Profile Picture</label>
+                            <input type="file" class="form-text form-control" name="profilePic" id="profilePic" value="{{ Session::get('frontSession')->profilePic}}" accept="image/*" required>
                         </li>
                     </ul>
                     <div style="margin-left: 10px;">
