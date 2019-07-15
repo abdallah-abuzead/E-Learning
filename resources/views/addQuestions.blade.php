@@ -65,7 +65,7 @@
                             <div class="thumbnail item-box" style="border: 1px solid #03A9F4;">
                                 <div class="question-header">
                                     <img src="{{ asset('images/delete.png') }}" alt="delete-question" alt="delete-question"
-                                    onclick="window.location.href ='/delete-question/'+ {{ $question->id }}">
+                                    onclick="window.location.href ='/delete-question/'{{ $question->id }}">
 
                                     <span>
                                         {{ $question->mark }}

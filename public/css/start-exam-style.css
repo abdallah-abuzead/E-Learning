@@ -1,0 +1,112 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url("../images/computer-board.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "Trebuchet MS";
+}
+
+.start-exam-container {
+    background: -webkit-linear-gradient(left, rgba(24, 57, 129, 0.55), rgba(58, 168, 228, 0.55));
+    margin-bottom: 3%;
+    padding: 3%;
+}
+
+.start-exam-course {
+    display: flex;
+    width: 700px;
+    background: #f8f9fa;
+    border: 1px solid #3b88bf;
+    border-radius: 5px;
+    height: 52px;
+}
+.subject-header,
+.subject-body {
+    color: #ff4000;
+    padding-top: 1rem;
+    font-size: 21px;
+}
+
+.subject-header {
+    color: #fff;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #3b88bf;
+}
+
+.start-exam-course img {
+    width: 96px;
+    height: 96px;
+    margin-right: 20px;
+    -ms-transform: translateY(-25%);
+    transform: translateY(-25%);
+}
+
+.question-mark {
+    text-align: right;
+}
+
+.mark-span {
+    color: #00bcd4;
+    font-size: 24px;
+    font-family: "Trebuchet MS";
+    text-shadow: 2px 2px 2px #ffeb3b;
+}
+
+.start-exam-div {
+    background: #f8f9fa;
+    padding: 10px;
+}
+
+.panel {
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.panel-heading {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.start-exam-form {
+    padding: 5%;
+    margin-top: 2%;
+}
+
+.options-group {
+    background-color: rgba(0, 188, 212,.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.submit-questions {
+    text-align: right;
+}
+
+.exam-title {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    width: 450px;
+    font-size: 32px;
+    float: right;
+    margin-top: 10px;
+    font-weight: bold;
+    padding: 5px;
+    padding-left: 15px;
+    color: #ffe70a;
+    background-color: #009688;
+}
+
+.question-head {
+    font-size: 21px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.form-check-label {
+    margin-left: 10px;
+}
