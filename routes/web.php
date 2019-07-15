@@ -74,6 +74,7 @@ Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
 
 Route::post('/storeComment' , 'CommentController@store')->name('storecomment');
 Route::get('/deleteComment/{id}' , 'CommentController@destroy')->name('destroycomment');
+Route::post('/updateComment/{id}' , 'CommentController@update')->name('updatecomment');
 });
 
 Route::get('search', 'CoursesController@search')->name('search');

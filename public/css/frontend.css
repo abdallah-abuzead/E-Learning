@@ -219,6 +219,10 @@ h1{
     top: 5px;
 }
 
+.edit-comment-form{
+    display: none;
+}
+
 .add-comment h3{
     margin: 0 0 10px;
 }

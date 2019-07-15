@@ -37,4 +37,25 @@ $(document).ready(function () {
     });
 
     //-------------------------------------------
+
+    $(".edit-comment").click(function (e) {
+        var commentElement = $(this).parent().prev();
+        var control = $(commentElement).next();
+        var form = $(commentElement).prev().prev();
+        $(control).hide();
+        $(commentElement).hide();
+        $(form).show();
+        $(commentElement).prev().show();
+        $(".lead").focus();
+    });
+
+    //-------------------------------------------
+
+    $(".discard").click(function () {
+        var parent = $(this).parent();
+        $(parent).hide();
+        $(parent).prev().hide();
+        $(parent).next().show();
+        $(parent).next().next().show();
+    });
 });
