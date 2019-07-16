@@ -117,6 +117,9 @@ class CoursesController extends Controller
      */
     public function edit($id)
     {
+        $course = Courses::find($id);
+        return view('Courses.update')->with('course' , $course);
+
         //
     }
 
@@ -129,6 +132,20 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'Subject'=>'required',
+            'level'=>'required|alpha',
+            'cost'=>'required|max:1000|regex:/^[0-9]+(?:\.[0-9]{1,2})?$/',
+
+        ]);
+
+
+        $course =Courses::find($id);
+        $course->Subject=$request->input('Subject');
+        $course->cost=$request->input('cost');
+        $course->level=$request->input('level');
+        $course->save();
+        return redirect('/homeStudent');
         //
     }
 

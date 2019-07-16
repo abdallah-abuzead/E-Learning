@@ -51,7 +51,8 @@ Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 
 Route::get('Courses/create' , 'CoursesController@create');
 Route::post('/Courses/create' , 'CoursesController@store');
-
+Route::get('Courses/update/{id}' , 'CoursesController@edit');
+Route::post('Courses/update/{id}' , 'CoursesController@update');
 Route::post('/editCourse/{id}' , 'CoursesController@edit');
 Route::get('/deleteCourse/{id}' , 'CoursesController@destroy');
 
