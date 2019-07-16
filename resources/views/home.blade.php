@@ -1,7 +1,9 @@
-
+@extends('footer')
 @extends('navbar')
 @section('content')
-<div id="home" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div id="home" >
 <div class="overlay">
 <div class="container">
 <div class="row ">
@@ -15,14 +17,12 @@
 </span>
 
                         <span >
-<i class="fa fa-lightbulb-o" ></i> allow student to register in courses
+<i class="fa fa-lightbulb-o" ></i> Allow student to register in courses
 </span>
                         <span >
-<i class="fa fa-lightbulb-o" ></i> allow student to test your self by Exam
+<i class="fa fa-lightbulb-o" ></i> Allow student to test your self by Exam
 </span>
-
             </div>
-
         </div>
     </div>
 
@@ -190,53 +190,53 @@
 
 <div class="carousel-inner">
     <div class="item active">
-        <div class="container center">
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
+<div class="container center">
+    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
 
-                <h4><i class="fa fa-quote-left"></i>website developed by Ibrahim <i class="fa fa-quote-right"></i></h4>
-                <div class="user-img pull-right">
-                    <img class="img-circle image-responsive" src='{{asset("images/ib.PNG")}}'>
+        <h4><i class="fa fa-quote-left"></i>website developed by mohamed safaa <i class="fa fa-quote-right"></i></h4>
+        <div class="user-img pull-right">
+            <img class="img-circle image-responsive" src='{{asset("images/aa.PNG")}}'>
 
-                </div>
-                <h5 class="pull-right"><strong class="c-black">Ibrahim</strong></h5>
-            </div>
         </div>
+        <h5 class="pull-right"><strong class="c-black">mohamed safaa</strong></h5>
+    </div>
+</div>
     </div>
     <div class="item">
         <div class="container center">
             <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
 
-                <h4><i class="fa fa-quote-left"></i>website developed by Mahmoud <i class="fa fa-quote-right"></i></h4>
+                <h4><i class="fa fa-quote-left"></i>website developed by abdallah abuzead <i class="fa fa-quote-right"></i></h4>
                 <div class="user-img pull-right">
-                    <img class="img-circle image-responsive" src='{{asset("images/ib.png")}}'>
+                    <img class="img-circle image-responsive" src='{{asset("images/ab.png")}}'>
 
                 </div>
-                <h5 class="pull-right"><strong class="c-black">Mahmoud</strong></h5>
+                <h5 class="pull-right"><strong class="c-black">abdallah abuzead</strong></h5>
             </div>
         </div>
     </div>
     <div class="item">
 <div class="container center">
 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
-<h4><i class="fa fa-quote-left"></i>website developed by Safaa <i class="fa fa-quote-right"></i></h4>
+<h4><i class="fa fa-quote-left"></i>website developed by mahmoud shtayeh <i class="fa fa-quote-right"></i></h4>
 <div class="user-img pull-right">
-<img class="img-circle image-responsive" src='{{asset("images/ib.png")}}'>
+<img class="img-circle image-responsive" src='{{asset("images/sh.png")}}'>
 
 </div>
-<h5 class="pull-right"><strong class="c-black">Safaa </strong></h5>
+<h5 class="pull-right"><strong class="c-black">mahmoud shtayeh </strong></h5>
 </div>
 </div>
 </div>
 <div class="item">
 <div class="container center">
 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
-<h4><i class="fa fa-quote-left"></i>website developed by Abdallah  <i class="fa fa-quote-right"></i></h4>
+<h4><i class="fa fa-quote-left"></i>website developed by Ibrahim elsafey  <i class="fa fa-quote-right"></i></h4>
 <div class="user-img pull-right">
 <img class="img-circle image-responsive" src='{{asset("images/ib.png")}}'>
 
 {{--<img src="assets/img/user2.png" alt="" class="img-circle image-responsive">--}}
 </div>
-<h5 class="pull-right"><strong class="c-black">Abdallah</strong></h5>
+<h5 class="pull-right"><strong class="c-black">Ibrahim elsafey</strong></h5>
 </div>
 </div>
 </div>
