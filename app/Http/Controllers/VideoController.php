@@ -98,6 +98,6 @@ class VideoController extends Controller
         $dir = base_path().'/public/courses/'.$course->subject.'_'.$course->id.'/'.$video->video;
         unlink($dir);
         $video->delete();
-        return redirect('/courseProfile/'.$course->id);
+        return redirect('/courses/'.$course->id);
     }
 }
