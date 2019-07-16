@@ -17,7 +17,7 @@
                 <strong> {{ $exam->duration }} </strong>
             </div>
             <div class="panel-body start-exam-div">
-                <form action="{{ url('check-result') }}" method="post">
+                <form id="myForm" action="{{ url('check-result/'.$exam->id) }}" method="post">
                     @csrf
                     @foreach($exam->questions as $question)
                         <div class="start-exam-form">
@@ -28,7 +28,7 @@
                                 @foreach($question->options as $option)
                                     <div class="form-check">
                                         <input type="radio" class="form-check" name="{{ $question->id }}"
-                                               value="{{ $option->id }}" id="{{ $option->id }}" required>
+                                               value="{{ $option->id }}" id="{{ $option->id }}">
                                         <label class="form-check-label" for="{{ $option->id }}">
                                             {{ $option->value }}
                                         </label>
@@ -57,13 +57,16 @@
             var mins = duration[1];
             var sec = duration[2];
 
-            setInterval(function() {
+            var countDown = setInterval(function() {
                 if(sec - 1 < 0) {
                     sec = 59;
                     if(mins - 1 < 0 ) {
                         mins = 59;
                         if(hours - 1 < 0) {
-
+                            clearInterval(countDown);
+                            $(window).unbind('beforeunload');
+                            $("#myForm").submit();
+                            return;
                         } else {
                             hours--;
                         }
@@ -76,6 +79,10 @@
 
                 $('.exam-title strong').text(hours + ":" + mins + ":" + sec);
             }, 1000);
+
+            $(window).bind('beforeunload', function() {
+                return true;
+            });
         });
     </script>
 @endsection

@@ -40,6 +40,7 @@ Route::get('/add-exam', 'ExamController@create')->name('createExam');
 Route::post('/store-question', 'ExamController@storeQuestion')->name('storeQuestion');
 Route::get('/add-questions', 'ExamController@store')->name('storeExam-addQuestions');
 Route::get('/delete-question/{id}', 'ExamController@deleteQuestion')->name('deleteQuestion');
+Route::post('/check-result/{id}', 'ExamController@showResult')->name('display-result');
 ////////////////////////////// end exam
 
 Route::group(['middleware'=>['frontLogin']], function() {
