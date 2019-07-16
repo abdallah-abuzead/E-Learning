@@ -46,14 +46,10 @@ Route::group(['middleware'=>['frontLogin']], function() {
 Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
 Route::get('Courses/create' , 'HomeController@addCourses');
 
-
-Route::get('/homeInstructor', 'HomeController@homeInstructor')->name('homeIns');
-
 Route::get('Courses/create' , 'CoursesController@create');
 Route::post('/Courses/create' , 'CoursesController@store');
 Route::get('Courses/update/{id}' , 'CoursesController@edit');
 Route::post('Courses/update/{id}' , 'CoursesController@update');
-Route::post('/editCourse/{id}' , 'CoursesController@edit');
 Route::get('/deleteCourse/{id}' , 'CoursesController@destroy');
 
 
@@ -64,18 +60,21 @@ Route::post('/updateDescription/{id}', 'DescriptionController@update')->name('up
 Route::get('/deleteDescription/{id}', 'DescriptionController@destroy')->name('deletedescription');
 
 Route::get('/enrollCourse/{id}', 'CoursesController@enroll')->name('enroll');
+
 Route::post('/storeVideo', 'VideoController@storeVideo')->name('storevideo');
 Route::get('/playVideo/{id}', 'VideoController@playVideo')->name('playvideo');
 Route::get('/playPreviousVideo/{id}', 'VideoController@playPreviousVideo')->name('playpreviousvideo');
 Route::get('/playNextVideo/{id}', 'VideoController@playNextVideo')->name('playnextvideo');
 Route::get('/deleteVideo/{id}', 'VideoController@destroyVideo');
-Route::get('/createExam', 'ExamController@create')->name('createexam');
-Route::get('/deleteExam', 'ExamController@distroy')->name('deleteexam');
-Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
 
 Route::post('/storeComment' , 'CommentController@store')->name('storecomment');
 Route::get('/deleteComment/{id}' , 'CommentController@destroy')->name('destroycomment');
 Route::post('/updateComment/{id}' , 'CommentController@update')->name('updatecomment');
+
+Route::get('/createExam', 'ExamController@create')->name('createexam');
+Route::get('/deleteExam', 'ExamController@distroy')->name('deleteexam');
+Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
+
 });
 
 Route::get('search', 'CoursesController@search')->name('search');

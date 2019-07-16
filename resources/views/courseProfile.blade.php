@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive img-thumbnail center-block" src='{{asset("images/course.jpg")}}'>
+                <img class="img-responsive img-thumbnail center-block" src='{{asset("coursePic/".$course->coursePic)}}'>
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
@@ -52,7 +52,7 @@
                         </span>
                 <ul class="dropdown-menu sitting">
                     <li>
-                        <a href="/Courses/update/{{$course->id}}">
+                        <a href="/Course/update/{{$course->id}}">
                             <i class="fa fa-edit"> </i>  Edit Course
                         </a>
                     </li>
@@ -64,7 +64,7 @@
                     </li>
                     @endif
                     <li><a href="/deleteExam/{{$course->id}}" class="delete-exam">
-                            <i class="fa fa-window-close"> </i>  Delete Exam
+                            <i class="fa fa-trash"> </i>  Delete Exam
                         </a>
                     </li>
                 </ul>
@@ -91,6 +91,7 @@
             <br><br>
         </div>
         <hr class="custom-hr">
+
         <br>
 
         {{--Add Description=============================================================================--}}

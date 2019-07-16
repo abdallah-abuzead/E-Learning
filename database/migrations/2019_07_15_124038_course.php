@@ -14,7 +14,7 @@ class Course extends Migration
     public function up()
     {
         Schema::table('course', function (Blueprint $table) {
-            //
+            $table->string('coursePic')->nullable();
         });
     }
 
