@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use App\User;
 use App\Option;
 use App\Question;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class ExamController extends Controller
        //$exam->duration = $request->get('duration');
        $exam->course_id = Session::get('courseId');
        $exam->save();
+
        Session::forget('courseId');
        Session::put("exam_id", $exam->id);
        Session::put("exam_title", $exam->title);
@@ -134,6 +136,20 @@ class ExamController extends Controller
         //
     }
 
+    public function showResult(Request $request, $id)
+    {
+        $exam = Exam::find($id);
+        $pivoteTable = $exam->course->students->where('id', Session::get('frontSession')->id);
+        $pivoteTable[0]->pivot->commulativeGrade = 0;
+        foreach ($exam->questions as $question) {
+            if($request->get("$question->id") == $question->correctAnswer->id) {
+                $pivoteTable[0]->pivot->commulativeGrade += $question->mark;
+            }
+        }
+        $pivoteTable[0]->pivot->save();
+
+        return view('examResult')->with("exam", $exam);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -142,7 +158,7 @@ class ExamController extends Controller
      */
     public function destroy($id)
     {
-        $exam =Exam::find($id);
+        $exam = Exam::find($id);
         $exam->delete();
     }
 }
