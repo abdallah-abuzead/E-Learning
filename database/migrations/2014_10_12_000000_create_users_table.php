@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('profilePicUrl')->nullable();
             $table->string('title')->nullable();
             $table->boolean('type')->default(0); // 0 = student , 1 = instructor
             //$table->timestamp('email_verified_at')->nullable();

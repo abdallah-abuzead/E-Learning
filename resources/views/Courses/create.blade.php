@@ -68,7 +68,7 @@
 @endforeach
             <div class="from-group">
                 <label for="cost"> Cost </label>
-                <input type="text" name="cost" id="cost" required class="form-control"/>
+                <input type="text" name="cost" id="cost" required class="form-control" placeholder="In Dollars"/>
             </div>
             @foreach ($errors->get('cost') as $error)
 

@@ -28,10 +28,6 @@ class VideoController extends Controller
         $course = Courses::find($request->input("id"));
 
         if ($request->hasFile('video')) {
-//            $getID3 = new \getID3;
-//            $file = $getID3->analyze($path);
-//            $duration = date('H:i:s.v', $file['playtime_seconds']);
-
             $videoNameWithExt = $request->file('video')->getClientOriginalName();
             $videoName = pathinfo($videoNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('video')->getClientOriginalExtension();
@@ -102,6 +98,6 @@ class VideoController extends Controller
         $dir = base_path().'/public/courses/'.$course->subject.'_'.$course->id.'/'.$video->video;
         unlink($dir);
         $video->delete();
-        return redirect('/courseProfile/'.$course->id);
+        return redirect('/courses/'.$course->id);
     }
 }

@@ -71,6 +71,7 @@ public function register(Request $request){
                 $student->fullName = $data['name'];
                 $student->username = $data['username'];
                 $student->email = $data['email'];
+                $student->profilePic = "no-photo.png";
                 $student->type = 0;
                 /*if($data['password']!=$data['rePassword']){
                     return redirect()->back()->with('flash_message_error','Passwords are not matched!');
@@ -91,6 +92,7 @@ public function register(Request $request){
                 $lecturer->fullName = $data['name'];
                 $lecturer->username = $data['username'];
                 $lecturer->email = $data['email'];
+                $lecturer->profilePic = "no-photo.png";
                 $lecturer->type = 1;
                 $lecturer->title = $data['title'];
                 $lecturer->password = bcrypt($data['password']);

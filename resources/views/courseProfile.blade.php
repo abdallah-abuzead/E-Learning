@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive img-thumbnail center-block" src='{{asset("images/course.jpg")}}'>
+                <img class="img-responsive img-thumbnail center-block" src='{{asset("coursePic/".$course->coursePic)}}'>
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>
@@ -51,11 +51,11 @@
                             <span class="caret"></span>
                         </span>
                 <ul class="dropdown-menu sitting">
-                    <!-- <li>
-                        <a href="/editCourse/{{$course->id}}">
+                    <li>
+                        <a href="/Courses/update/{{$course->id}}">
                             <i class="fa fa-edit"> </i>  Edit Course
                         </a>
-                    </li> -->
+                    </li>
                     @if(empty($course->exam))
                     <li><a href="/add-exam">
                     {{Session::put("courseId", $course->id)}}
@@ -63,10 +63,10 @@
                         </a>
                     </li>
                     @endif
-                    <!-- <li><a href="/deleteExam/{{$course->id}}" class="delete-exam">
-                            <i class="fa fa-window-close"> </i>  Delete Exam
+                    <li><a href="/deleteExam/{{$course->id}}" class="delete-exam">
+                            <i class="fa fa-trash"> </i>  Delete Exam
                         </a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         @endif
@@ -85,20 +85,13 @@
                         <input type="file" name="video" id="video" class="form-control" accept="video/*" required>
                     </div>
                 </div>
-
-                {{--<div class="form-group">--}}
-                    {{--<label for="duration">Video Duration</label>--}}
-                    {{--<div >--}}
-                        {{--<input type="number" name="duration" id="duration" class="form-control" placeholder="Duration In Minuts">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-                <input type="submit" value="Upload Video" class="btn btn-primary form-control">
-                <button class="btn btn-danger cancel form-control">Cancel</button>
-
+                <input type="submit" value="Upload Video" class="btn btn-primary form-control" >
             </form>
+            <button class="btn btn-danger cancel form-control" style="width:420px; margin-left: 29px;">Cancel</button>
+            <br><br>
         </div>
         <hr class="custom-hr">
+
         <br>
 
         {{--Add Description=============================================================================--}}
@@ -123,9 +116,9 @@
                         </div>
 
                         <input type="submit" value="Add Description" class="btn btn-primary form-control">
-                        <button class="btn btn-danger cancel form-control">Cancel</button>
-
                     </form>
+                    <button class="btn btn-danger cancel form-control" style="width:420px; margin-left: 29px;">Cancel</button>
+                    <br><br>
                 </div>
 
                 <hr class="custom-hr">
@@ -203,7 +196,7 @@
             <div class='row'>
                 <div class="comment-box">
                     <div class='col-md-2 text-center'>
-                        <img class="img-responsive img-thumbnail center-block img-circle" src="{{asset('images/commenter.png')}}">
+                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
                         {{Session::get('frontSession')->fullName}}
                     </div>
 

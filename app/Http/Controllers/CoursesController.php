@@ -60,6 +60,7 @@ class CoursesController extends Controller
         $courses->cost = $request->input('cost');
         $courses->numOfHours = $request->input('NumberOfHours');
         $courses->lec_id = Session::get('frontSession')->id;
+        $courses->coursePic = "default.jpg";
 
         $courses->save();
         return redirect('/homeStudent');
@@ -107,37 +108,55 @@ class CoursesController extends Controller
         //return view("enrollCourse")->with("course", $course);
     }
 
+    //===========================================================================
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $course = Courses::find($id);
+        return view('Courses.update')->with('course', $course);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //===========================================================================
+
     public function update(Request $request, $id)
     {
+
+        $this->validate($request,[
+            'Subject'=>'required',
+            'level'=>'required|alpha',
+            'cost'=>'required|max:1000|regex:/^[0-9]+(?:\.[0-9]{1,2})?$/',
+            'NumberOfHours'=>'required|integer|min:1',
+            'coursePic'=>'required',
+
+
+        ]);
+//        dd($request->input('coursePic'));
+        $courses = Courses:: find($id);
+
+        $courses->subject = $request->input('Subject');
+        $courses->level = $request->input('level');
+        $courses->cost = $request->input('cost');
+        $courses->numOfHours = $request->input('NumberOfHours');
+        //------------------------------------
+        if ($request->hasFile('coursePic')) {
+            $picNameWithExt = $request->file('coursePic')->getClientOriginalName();
+            $picName = pathinfo($picNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('coursePic')->getClientOriginalExtension();
+            $picNameToStore = $picName.time().".".$extension;
+            $request->file('coursePic')->move(base_path().'/public/coursePic/', $picNameToStore);
+        }
+        else
+            $picNameToStore = "default.jpg";
+        $courses->coursePic = $picNameToStore;
+        //------------------------------------
+        $courses->save();
+        return redirect('/courses/'.$id);
+
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //===========================================================================
+
     public function destroy($id)
     {
         $course = Courses::find($id);

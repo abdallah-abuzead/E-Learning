@@ -4,8 +4,8 @@
     <div class="container">
 
     @if(!empty(Session::get('frontSession')))
-        <img class="my-image img-circle img-thumbnail" src="{{asset('images/commenter.png')}}">
-        <div class="btn-group my-info">
+            <img class="my-image img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".Session::get('frontSession')->profilePic) }}" alt="">
+            <div class="btn-group my-info">
                         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             {{--user logged in--}}
                             {{Session::get('frontSession')->username}}
