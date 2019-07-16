@@ -52,7 +52,7 @@
                         </span>
                 <ul class="dropdown-menu sitting">
                     <li>
-                        <a href="/Course/update/{{$course->id}}">
+                        <a href="/Courses/update/{{$course->id}}">
                             <i class="fa fa-edit"> </i>  Edit Course
                         </a>
                     </li>

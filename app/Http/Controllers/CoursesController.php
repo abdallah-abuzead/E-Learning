@@ -113,7 +113,7 @@ class CoursesController extends Controller
     public function edit($id)
     {
         $course = Courses::find($id);
-        return view('updateCourse')->with('course', $course);
+        return view('Courses.update')->with('course', $course);
     }
 
     //===========================================================================
