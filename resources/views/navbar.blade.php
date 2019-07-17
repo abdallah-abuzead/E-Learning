@@ -50,7 +50,7 @@
         </div>
     </div>
 </nav>
-<br><br><br>
+@if(!request()->routeIs('home'))<br><br><br>@endif
 
 @yield('content')
 @endsection

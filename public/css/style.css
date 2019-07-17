@@ -1,4 +1,19 @@
-﻿body {
+﻿/*=============================================================
+    Authour URI: www.binarytheme.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% Free To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDIT US AND TELL YOUR FRIENDS ABOUT US
+
+    ========================================================  */
+
+
+/*=====================================
+   GENERAL STYLE SECTION
+    ===================================*/
+body {
     font-family: 'Open Sans', sans-serif;
     font-size:14px;
     line-height:25px;
@@ -7,9 +22,9 @@
     text-align:center;
 }
 .sub-head {
-    padding-bottom:50px;
-    display:block;
-}
+        padding-bottom:50px;
+        display:block;
+    }
 .pad-top-botm {
     padding-top:50px;
     padding-bottom:50px;
@@ -25,49 +40,50 @@ h3{
 
 }
 
-#home{
-    background: url(../images/6.jpg) no-repeat center center;
-    padding: 0;
-    -webkit-background-size: cover;
-    background-size: cover;
-}
-#home h1 {
-    padding:150px 20px 20px 0px;
-    color: white;
-    font-size:40px;
-    font-weight:900;
 
+
+#home{
+background: url(../images/6.jpg) no-repeat center center;
+padding: 0;
+-webkit-background-size: cover;
+background-size: cover;
 }
-#home .head-text span {
-    display: block;
-    font-size: 24px;
-    color: white;
-    /*margin-bottom: 25px;*/
-}
-#home .head-text span >i {
-    margin-right: 10px;
-    color: #0000F0;
-}
-#home p {
-    padding:10px 20px 20px 20px;
-    color:#fff;
-    font-size:16px;
-    line-height:20px;
-    font-weight:800;
-    text-align:center;
-}
-#home .overlay {
-    /*background:url(../img/overlays/06.png);*/
-    min-height:700px;
-}
-#home h3 {
-    color:#fff;
-}
+    #home h1 {
+        padding:150px 20px 20px 0px;
+        color: white;
+        font-size:40px;
+        font-weight:900;
+
+    }
+    #home .head-text span {
+        display: block;
+        font-size: 24px;
+        color: white;
+        /*margin-bottom: 25px;*/
+    }
+        #home .head-text span >i {
+             margin-right: 10px;
+             color: #0000F0;
+        }
+     #home p {
+        padding:10px 20px 20px 20px;
+        color:#fff;
+        font-size:16px;
+        line-height:20px;
+        font-weight:800;
+       text-align:center;
+    }
+    #home .overlay {
+              /*background:url(../img/overlays/06.png);*/
+        min-height:700px;
+    }
+    #home h3 {
+        color:#fff;
+    }
 
 #about {
-    /*background-color: #efefef;*/
     background-color:#122b40;
-    padding-top: 80px;
+     padding-top: 80px;
     color: white;
 }
 .big-icon {
@@ -78,16 +94,17 @@ h3{
     text-align: justify;
     padding: 10px 50px;
 }
+
 .donars-section {
-    background: url(../images/7.jpg) no-repeat center center;
-    padding: 0;
-    -webkit-background-size: cover;
-    background-size: cover;
-    color:white;
+background: url(../images/7.jpg) no-repeat center center;
+padding: 0;
+-webkit-background-size: cover;
+background-size: cover;
+color:white;
 }
-.donars-section .overlay {
-    /*background: url(../img/overlays/02.png);*/
-}
+ .donars-section .overlay {
+              background: url(../images/overlays/02.png);
+    }
 .slide-custom {
     min-height:200px;
     padding:100px 20px 100px 20px;
@@ -96,6 +113,10 @@ h3{
 .donars-section h4 {
     line-height:40px;
 }
-.donars-section h4 i{
-    padding:5px;
+ .donars-section h4 i{
+   padding:5px;
 }
+
+
+
+ 

@@ -39,7 +39,7 @@
 
         {{--Course Control==========================================================================--}}
 
-        @if(Session::get('frontSession')->id==$course->lec_id)
+        @if(!empty(Session::get('frontSession')) && Session::get('frontSession')->id==$course->lec_id)
             <button class="btn btn-primary btn-lg add-video-button">
                 <i class="fa fa-plus"></i>  Add New Video
             </button>
@@ -98,7 +98,7 @@
 
         <h2>Course Description</h2>
         <div class="description">
-        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
+        @if(!empty(Session::get('frontSession')) && Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
                 <button class="btn btn-default add-description-button" style="margin-left: 20px; background: #eee;">
                     <i class="fa fa-plus fa-2x"></i>
                 </button>
@@ -128,7 +128,7 @@
 
             @foreach($course->descriptions as $description)
                 <div class="desc">
-                    @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
+                    @if(!empty(Session::get('frontSession')) && Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
                         <div class="hidden-control">
                             <a href="/editDescription/{{$description->id}}">
                                 <i class="fa fa-edit edit-description" style="cursor: pointer; color: blue;"></i>
@@ -148,7 +148,7 @@
 
         {{--Check Enrollment==================================================================================--}}
         
-        @if( !$enrolled && Session::get('frontSession')->id!=$course->lec_id)
+        @if( !empty(Session::get('frontSession')) && !$enrolled && Session::get('frontSession')->id!=$course->lec_id)
             <!-- <a class="btn btn-success btn-lg enroll" href="">Watch Videos</a> -->
             <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">
                 Enroll Now
@@ -159,7 +159,7 @@
 
         {{--Show Videos Section================================================================================--}}
 
-        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
+        @if( !empty(Session::get('frontSession')) && ($enrolled || Session::get('frontSession')->id==$course->lec_id))
         <div class="row">
             <hr class="custom-hr">
         <div class="row" style="border: 1px solid #ddd; padding: 20px; padding-bottom: 5px; border-radius: 5px; background: #fff;">
@@ -183,7 +183,7 @@
         <br><br>
 
         {{--Start Exam===========================================================================================--}}
-        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
+        @if( !empty(Session::get('frontSession')) && ($enrolled || Session::get('frontSession')->id==$course->lec_id))
         <a href="/startExam/{{$course->id}}" class="start-exam">Start {{$course->subject}} Exam!</a>
         @endif
         <br><br><br>
@@ -196,8 +196,9 @@
             <div class='row'>
                 <div class="comment-box">
                     <div class='col-md-2 text-center'>
-                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height: 80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
-                        {{Session::get('frontSession')->fullName}}
+                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
+                        {{$comment->user->fullName}}
+
                     </div>
 
                     <form class="edit-comment-form" action="/updateComment/{{$comment->id}}" method="post">
@@ -214,7 +215,7 @@
 
                     {{--Controle Comment==========================================================================--}}
 
-                    @if(Session::get('frontSession')->id == $comment->user_id)
+                    @if(!empty(Session::get('frontSession')) && Session::get('frontSession')->id == $comment->user_id)
                         <div class="col-md-4"><br>
                             <i class="fa fa-edit edit-comment" style="cursor: pointer;"></i>
                             <span style="margin-left: 20px;"></span>
@@ -230,7 +231,7 @@
         @endforeach
 
         {{--Add Comment===========================================================================================--}}
-        @if( $enrolled || Session::get('frontSession')->id==$course->lec_id)
+        @if( !empty(Session::get('frontSession')) && ($enrolled || Session::get('frontSession')->id==$course->lec_id))
         <div class="row">
             <div class="col-md-offset-3">
                 <div class="add-comment">
@@ -249,7 +250,7 @@
 
         {{--Delete Course=======================================================================================--}}
 
-        @if(Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
+        @if(!empty(Session::get('frontSession')) && Session::get('type')=='lecturer' && Session::get('frontSession')->id==$course->lec_id)
             <span class="pull-right confirm"><a href="/deleteCourse/{{$course->id}}"> Delete This Course </a></span>
         @endif
         <br><br>
