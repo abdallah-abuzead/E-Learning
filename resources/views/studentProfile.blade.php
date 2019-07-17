@@ -60,7 +60,7 @@
     <div id="my-items" class="my--ads block">
         <div class="container">
             <div class="panel panel-primary">
-                <div class="panel-heading">Courses Crated</div>
+                <div class="panel-heading">Created Courses</div>
                 <div class="panel-body">
                     <div class='row'>
                     @if($student->coursesCreated->count() === 0)
@@ -106,7 +106,7 @@
                                         @endif
                                     </span>
                                     <img class="img-responsive img-thumbnail" src="{{asset('images/course.jpg')}}">
-                                    <h3 class="course-subject"> {{ $course->subject }}</h3>
+                                    <h3><a href="/courses/{{$course->id}}"> {{$course->subject}}</a></h3>
                                     <div class="caption">
                                         <details class="lecturer-detail">
                                             <summary>Added by: <a href="#"> {{ $course->lecturer->fullName }} </a></summary>
