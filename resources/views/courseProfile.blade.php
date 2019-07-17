@@ -196,7 +196,7 @@
             <div class='row'>
                 <div class="comment-box">
                     <div class='col-md-2 text-center'>
-                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
+                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height: 80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
                         {{Session::get('frontSession')->fullName}}
                     </div>
 
@@ -207,7 +207,7 @@
                     </form>
                     <div style="display: none;">
                         <button class='btn btn-danger discard' style="position: relative; left: 725px; top: -33px;">Discard</button>
-                        <hr class="custom-hr">
+                        {{--<hr class="custom-hr">--}}
                     </div>
 
                     <div class='col-md-6 lead'>{{$comment->comment}}</div>
