@@ -196,7 +196,7 @@
             <div class='row'>
                 <div class="comment-box">
                     <div class='col-md-2 text-center'>
-                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
+                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height:80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
                         {{$comment->user->fullName}}
 
                     </div>
