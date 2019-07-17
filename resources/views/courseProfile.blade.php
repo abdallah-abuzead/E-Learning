@@ -191,7 +191,7 @@
         <br><br>
 
         {{--Start Exam===========================================================================================--}}
-        @if( !empty(Session::get('frontSession')) && $enrolled && !$examFinished)
+        @if( !empty(Session::get('frontSession')) && $enrolled && !$examFinished && !empty($course->exam))
         <a href="/startExam/{{$course->id}}" class="start-exam">Start {{$course->subject}} Exam!</a>
         @endif
         <br><br><br>

@@ -1,7 +1,7 @@
 @extends('navbar')
 
 <link rel="stylesheet" href="{{ asset('css/examResult-style.css') }}">
-<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet"> -->
 
 @section('content')
     <div class="container result-exam">
