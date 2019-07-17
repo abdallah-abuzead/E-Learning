@@ -183,7 +183,7 @@
         <br><br>
 
         {{--Start Exam===========================================================================================--}}
-        @if( !empty(Session::get('frontSession')) && ($enrolled || Session::get('frontSession')->id==$course->lec_id))
+        @if( !empty(Session::get('frontSession')) && $enrolled && !$examFinished)
         <a href="/startExam/{{$course->id}}" class="start-exam">Start {{$course->subject}} Exam!</a>
         @endif
         <br><br><br>

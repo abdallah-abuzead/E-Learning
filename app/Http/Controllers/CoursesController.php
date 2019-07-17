@@ -79,14 +79,18 @@ class CoursesController extends Controller
         $course = Courses::find($id);
         $videos = Videos::all()->where('course_id', $id);
         $enrolled = false ;
+        $examFinished = false;
         foreach($course->students as $student){
             if(!empty(Session::get('frontSession')) && $student->id == Session::get('frontSession')->id){
                 $enrolled = true;
+                if(!empty($student->pivot->commulativeGrade)){
+                    $examFinished = true;
+                }
                 break;
             }
         }
         //dd($course->students[0]->pivot->commulativeGrade);
-        return view("courseProfile")->with(compact('course', 'videos','enrolled'));
+        return view("courseProfile")->with(compact('course', 'videos','enrolled','examFinished'));
     }
 
     public function enroll($id)
