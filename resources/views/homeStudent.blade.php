@@ -9,7 +9,7 @@
                     <img class="img-responsive center-block" src='{{asset("coursePic/".$course->coursePic)}}'>
                     <div class="caption">
                         <h3><a href="/courses/{{$course->id}}"> {{$course->subject}}</a></h3>
-                        <p>Added by: {{$course->lecturer->username}}</p>
+                        <p>Added by: {{$course->lecturer->fullName}}</p>
                     </div>
                 </div>
             </div>
