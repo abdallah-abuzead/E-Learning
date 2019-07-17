@@ -78,6 +78,12 @@ Route::get('/createExam', 'ExamController@create')->name('createexam');
 Route::get('/deleteExam', 'ExamController@distroy')->name('deleteexam');
 Route::get('/startExam/{course_id}', 'ExamController@show')->name('startexam');
 
+
+// ----------------- Payment ----------------------
+Route::get('stripe/{id}', 'StripePaymentController@stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+// ------------------------------------------------
+
 });
 
 Route::get('search', 'CoursesController@search')->name('search');
