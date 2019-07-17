@@ -4,7 +4,7 @@
     <div class="container">
 
     @if(!empty(Session::get('frontSession')))
-            <img class="my-image img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".Session::get('frontSession')->profilePic) }}" alt="">
+            <a href="/student-profile/{{Session::get('frontSession')->id}}"><img class="my-image img-circle " style="border: 1px solid #aaa;" src="{{ asset("profilePic/".Session::get('frontSession')->profilePic) }}" alt=""></a>
             <div class="btn-group my-info">
                         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             {{--user logged in--}}
