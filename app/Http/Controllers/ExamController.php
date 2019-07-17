@@ -28,6 +28,7 @@ class ExamController extends Controller
      */
     public function create()
     {
+
         return view("addExam");
     }
 
