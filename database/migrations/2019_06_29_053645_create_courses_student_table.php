@@ -16,7 +16,7 @@ class CreateUserHasCourseTable extends Migration
         Schema::create('users_has_courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('course_id'); 
+            $table->unsignedBigInteger('course_id');
             $table->unique(['student_id', 'course_id']);
 
             $table->unsignedInteger('commulativeGrade')->nullable();
