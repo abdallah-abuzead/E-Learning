@@ -41,6 +41,8 @@ Route::post('/store-question', 'ExamController@storeQuestion')->name('storeQuest
 Route::get('/add-questions', 'ExamController@store')->name('storeExam-addQuestions');
 Route::get('/delete-question/{id}', 'ExamController@deleteQuestion')->name('deleteQuestion');
 Route::post('/check-result/{id}', 'ExamController@showResult')->name('display-result');
+Route::get('/download-certificate/{id}', 'ExamController@certificate')->name('download-certificate');
+//Route::get('/certificate/{id}', 'ExamController@certificate')->name('display-certificate');
 ////////////////////////////// end exam
 
 Route::group(['middleware'=>['frontLogin']], function() {

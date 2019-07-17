@@ -8,6 +8,7 @@ use App\Option;
 use App\Question;
 use Illuminate\Http\Request;
 use Session;
+use PDF;
 
 class ExamController extends Controller
 {
@@ -140,16 +141,22 @@ class ExamController extends Controller
     {
         $exam = Exam::find($id);
         $pivoteTable = $exam->course->students->where('id', Session::get('frontSession')->id);
-        $pivoteTable[0]->pivot->commulativeGrade = 0;
+        $pivoteTable[0]->pivot->commulativeGrade = 0.0;
+        $totalGrade = 0;
         foreach ($exam->questions as $question) {
+            $totalGrade += $question->mark;
             if($request->get("$question->id") == $question->correctAnswer->id) {
                 $pivoteTable[0]->pivot->commulativeGrade += $question->mark;
             }
         }
-        $pivoteTable[0]->pivot->save();
 
-        return view('examResult')->with("exam", $exam);
+        $pivoteTable[0]->pivot->commulativeGrade = $pivoteTable[0]->pivot->commulativeGrade / $totalGrade * 100;
+        $pivoteTable[0]->pivot->save();
+        $student = User::find(Session::get('frontSession')->id);
+
+        return view('examResult')->with(compact('exam', 'student'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -160,5 +167,17 @@ class ExamController extends Controller
     {
         $exam = Exam::find($id);
         $exam->delete();
+    }
+
+    public function certificate($id)
+    {
+        $exam = Exam::find($id);
+        $student = User::find(Session::get('frontSession')->id);
+
+        $data = ['exam' => $exam,
+            'student' => $student];
+
+        $pdf = PDF::loadView('certificate', $data);
+        return $pdf->download('certification.pdf');
     }
 }

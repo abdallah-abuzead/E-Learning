@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'yellowtailregular';
+    src: url(" ../fonts/yellowtail-regular-webfont.woff2") format('woff2'),
+    url(" ../fonts/yellowtail-regular-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url("../images/computer-board.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.result-exam {
+    background: -webkit-linear-gradient(left, rgba(24, 57, 129, 0.55), rgba(58, 168, 228, 0.55));
+    margin-bottom: 3%;
+    padding: 3%;
+}
+
+.start-exam-div {
+    background: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.start-exam-div span {
+    font-family: yellowtailregular;
+    font-size: 48px;
+    color: #e80000;
+    text-shadow: 2px 2px black;
+}
+.panel {
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.panel-heading {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.certificate-container {
+    margin-top: 20px;
+}

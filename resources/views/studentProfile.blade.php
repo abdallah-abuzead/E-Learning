@@ -102,7 +102,7 @@
                                         @if($course->pivot->commulativeGrade == null)
                                             In progress
                                         @else
-                                            {{ $course->pivot->commulativeGrade }}
+                                            {{ $course->pivot->commulativeGrade }}%
                                         @endif
                                     </span>
                                     <img class="img-responsive img-thumbnail" src="{{asset('images/course.jpg')}}">
