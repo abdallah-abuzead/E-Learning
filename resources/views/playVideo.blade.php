@@ -67,8 +67,8 @@
             <div class='row'>
                 <div class="comment-box">
                     <div class='col-md-2 text-center'>
-                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height: 80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
-                        {{Session::get('frontSession')->fullName}}
+                        <a href="/student-profile/{{$comment->user->id}}"><img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height: 80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt=""></a>
+                        <a href="/student-profile/{{$comment->user->id}}" style="text-decoration: none; font-weight: bold; color:#000;">{{Session::get('frontSession')->fullName}}</a>
                     </div>
 
                     <form class="edit-comment-form" action="/updateComment/{{$comment->id}}" method="post">
