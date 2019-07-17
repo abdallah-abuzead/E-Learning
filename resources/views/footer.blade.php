@@ -1,15 +1,18 @@
 <html>
 <head>
     <title> @yield('titleph')</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
 
     {{--<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">--}}
-    <script src="{{asset('js/bootstrap.js')}}"></script>
+    {{--<script src="{{asset('js/bootstrap.js')}}"></script>--}}
     <style>
 
         footer{
-            background-color:#463C54;
+            /*background-color:#463C54;*/
+            /*background-color: #cbd3da;*/
             color: #f7f7f7;
+            background-color: #284257;
+
         }
 
 
@@ -45,6 +48,13 @@
             background: #007bb5;
             color: white;
         }
+        #last{
+
+            height: 50px;
+
+
+        }
+
 
     </style>
 
@@ -63,18 +73,15 @@
 
             <div class="col-md-4 mx-auto">
 
-
+                <hr>
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
                 <p>Here you can list any thig about online course website.</p>
 
             </div>
 
-
-            <hr class="clearfix w-100 d-md-none">
-
-
             <div class="col-md-2 mx-auto">
 
+                <hr>
 
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Legal</h5>
 
@@ -96,7 +103,7 @@
             </div>
 
 
-            <hr class="clearfix w-100 d-md-none">
+            <hr>
 
 
             <div class="col-md-2 mx-auto">
@@ -120,10 +127,6 @@
                 </ul>
 
             </div>
-
-
-            <hr class="clearfix w-100 d-md-none">
-
 
             <div class="col-md-2 mx-auto">
 
@@ -163,7 +166,7 @@
             <h5 class="mb-1">Register for free</h5>
         </li>
         <li class="list-inline-item">
-            <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
+            <a href="/user-register" class="btn btn-danger btn-rounded">Sign up!</a>
         </li>
     </ul>
 
@@ -195,11 +198,13 @@
 
     </ul>
 
-
-
-    <div class="footer-copyright text-center py-3" style="background-color:#2F3133">© 2019 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/"> OnlineCourses.com</a>
+    <div id="last" style="background-color:#2F3133">
+        <h4 style="text-align: center;padding: 10px">
+        © 2019 Copyright:
+        <a href="#">
+            OnlineCourses.com</a>
         Developed By our team
+        </h4>
     </div>
 
 
