@@ -101,6 +101,8 @@ class StudentController extends Controller
         $student->password = bcrypt($request->get('password'));
         $student->save();
 
+        Session::put('frontSession',$student);
+
         return redirect("student-profile/$id");
     }
 
