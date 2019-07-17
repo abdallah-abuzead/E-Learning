@@ -59,6 +59,7 @@
                     @if(empty($course->exam))
                     <li><a href="/add-exam">
                     {{Session::put("courseId", $course->id)}}
+                            {{Session::put("subject", $course->subject)}}
                             <i class="fa fa-plus"> </i>  Add Exam
                         </a>
                     </li>
@@ -196,8 +197,8 @@
             <div class='row'>
                 <div class="comment-box">
                     <div class='col-md-2 text-center'>
-                        <img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height:80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt="">
-                        {{$comment->user->fullName}}
+                        <a href="/student-profile/{{$comment->user->id}}"><img class="img-responsive center-block img-circle " style="border: 1px solid #aaa; width: 80px; height:80px;" src="{{ asset("profilePic/".$comment->user->profilePic)}}" alt=""></a>
+                            <a href="/student-profile/{{$comment->user->id}}" style="text-decoration: none; font-weight: bold; color:#000;">{{$comment->user->fullName}}</a>
 
                     </div>
 
