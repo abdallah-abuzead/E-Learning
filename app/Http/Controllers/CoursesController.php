@@ -101,14 +101,18 @@ class CoursesController extends Controller
 
         $course->students()->attach(Session::get('frontSession')->id);
         
+        $examFinished = false;
         foreach($course->students as $student){
-            if($student->id == Session::get('frontSession')->id){
+            if(!empty(Session::get('frontSession')) && $student->id == Session::get('frontSession')->id){
                 $enrolled = true;
+                if(!empty($student->pivot->commulativeGrade)){
+                    $examFinished = true;
+                }
                 break;
             }
         }
         // we should make the enrollment here
-        return view("courseProfile")->with(compact('course', 'videos','enrolled'));
+        return view("courseProfile")->with(compact('course', 'videos','enrolled','examFinished'));
         //return view("enrollCourse")->with("course", $course);
     }
 

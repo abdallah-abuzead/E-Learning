@@ -151,10 +151,17 @@
         
         @if( !empty(Session::get('frontSession')) && !$enrolled && Session::get('frontSession')->id!=$course->lec_id)
             <!-- <a class="btn btn-success btn-lg enroll" href="">Watch Videos</a> -->
+            @if($course->cost == 0)
             <a class="btn btn-success btn-lg enroll" href="/enrollCourse/{{$course->id}}">
                 Enroll Now
-                <span>@if($course->cost>0)${{$course->cost}} @endif</span>
+                <span>For Free</span>
             </a>
+            @else
+            <a class="btn btn-success btn-lg enroll" href="/stripe/{{$course->id}}">
+                Enroll Now
+                <span>${{$course->cost}}</span>
+            </a>
+            @endif
         @endif
         <br>
 
