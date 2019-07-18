@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive img-thumbnail center-block" src='{{asset("coursePic/".$course->coursePic)}}'>
+                <img class="img-responsive img-thumbnail center-block" style=" height: 250px;" src='{{asset("coursePic/".$course->coursePic)}}'>
             </div>
             <div class="col-md-8 course-info">
                 <h2>{{$course->subject}}</h2>

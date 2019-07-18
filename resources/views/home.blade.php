@@ -10,17 +10,17 @@
 <div class="col-lg-9 col-md-9 head-text">
 <h1 id="divDisp" >Online course </h1>
 <span>
-<i class="fa fa-lightbulb-o " ></i>For help your Student
+<i class="fa fa-lightbulb " style="color:yellow ;"></i> To help yourself
 </span>
-                        <span>
-<i class="fa fa-lightbulb-o" ></i>Allow student to see all courses avaliable
+    <span>
+<i class="fa fa-lightbulb " style="color:yellow ;"></i> Allow student to see all courses avaliable
 </span>
 
                         <span >
-<i class="fa fa-lightbulb-o" ></i> Allow student to register in courses
+<i class="fa fa-lightbulb " style="color:yellow ;"></i> Allow student to register in courses
 </span>
                         <span >
-<i class="fa fa-lightbulb-o" ></i> Allow student to test your self by Exam
+<i class="fa fa-lightbulb " style="color:yellow ;"></i> Allow student to test your self by Exam
 </span>
             </div>
         </div>

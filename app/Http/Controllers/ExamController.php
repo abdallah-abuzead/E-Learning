@@ -111,8 +111,8 @@ class ExamController extends Controller
     public function show($id)
     {
         $exam = Exam::all()->where("course_id", $id);
-
-        return view('startExam')->with("exam", $exam[0]);
+        $data = $exam->first();
+        return view('startExam')->with("exam", $data);
     }
 
     /**
